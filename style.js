@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableWithoutFeedback } from "react-native";
 
 export default StyleSheet.create({
     right_side: {
@@ -11,20 +11,96 @@ export default StyleSheet.create({
     
       header: {
         flex: 0.5, 
-        backgroundColor: 'powderblue',
-        justifyContent: 'center',
-        paddingTop: 60,
-        alignItems: 'center'
+        backgroundColor: 'white',
+        justifyContent: "flex-end",
+      
+        display: 'flex',
+        alignItems: "flex-end",
+        flexDirection: "row",
+        
       },
     
       classroomMapping: {
         flex: 3.5, 
         backgroundColor: 'skyblue',
+       
         justifyContent: 'center',
         paddingTop: 60,
         alignItems: 'center'
       },
+      comment_box: {
+       
+        backgroundColor: "white",
+     
+        paddingVertical: 15,
+        marginBottom: 30,
+        width: '60%',
+        alignItems: 'center',
+        paddingHorizontal: 15,
+        borderRadius: 100,
+        margin:10
+      },
+      classroom_name: {
+          fontSize: 30,
+          color: "black",
+          fontWeight: "bold",
+          paddingTop: 20,
+      },
     
+      alert_bar: {
+        color: 'white',
+        // grid-column-start: 2,
+        // grid-column-end:3,
+        // height: '20px',
+        borderRadius: 100,
+        
+        padding: 10,
+        backgroundColor: '#22AD1E',
+        position: 'relative',
+        display: 'flex',
+        alignItems: "flex-end",
+        /* IE10 */
+        
+        /* padding: 0 8px; */
+        // -webkit-box-align: center,
+        // grid-auto-columns: 1fr,
+        /* grid-auto-columns: 1fr; */
+        // grid-template-columns: 1fr 2fr, 
+        /* align-self: center;  */
+        // grid-column-gap: 0px,
+        // grid-row-gap: 30px,
+        // margin-top: 10%,
+        textAlign: 'right',
+        // width: 100%,
+      },
+
+      alert_bar2: {
+        borderRadius: 100,
+        color: 'white',
+        // grid-column-start: 2,
+        // grid-column-end:3,
+        // height: '20px',
+        padding: 10,
+        paddingHorizontal: 60,
+        backgroundColor: '#3CCE3C',
+        position: 'relative',
+        display: 'flex',
+        alignItems: "flex-end",
+        /* IE10 */
+        
+        /* padding: 0 8px; */
+        // -webkit-box-align: center,
+        // grid-auto-columns: 1fr,
+        /* grid-auto-columns: 1fr; */
+        // grid-template-columns: 1fr 2fr, 
+        /* align-self: center;  */
+        // grid-column-gap: 0px,
+        // grid-row-gap: 30px,
+        // margin-top: 10%,
+        textAlign: 'right',
+        // width: 100%,
+      },
+
       bottom: {
         flex: 1, 
         flexDirection:'row',
