@@ -12,7 +12,7 @@ export default StyleSheet.create({
       header: {
         flex: 0.5, 
         backgroundColor: 'white',
-        justifyContent: "flex-end",
+        justifyContent: "center",
       
         display: 'flex',
         alignItems: "flex-end",
@@ -53,7 +53,7 @@ export default StyleSheet.create({
         // grid-column-end:3,
         // height: '20px',
         borderRadius: 100,
-        
+        width: "20%",
         padding: 10,
         backgroundColor: '#22AD1E',
         position: 'relative',
@@ -81,7 +81,7 @@ export default StyleSheet.create({
         // grid-column-end:3,
         // height: '20px',
         padding: 10,
-        paddingHorizontal: 60,
+        width: "80%",
         backgroundColor: '#3CCE3C',
         position: 'relative',
         display: 'flex',

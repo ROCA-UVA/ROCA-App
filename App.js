@@ -3,7 +3,7 @@ import {ImageBackground, TextInput,  Button, Platform, StyleSheet, Text, PropTyp
 import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
 import styles from './style'
 
-
+const data = [{ classroom_name: "THN E316" }, { activity_type: "Instructor activities" }, { activity: "Instructor activities" }];
 export default class Touchables extends Component {
 
   _twoOptionAlertHandler=()=>{
@@ -27,17 +27,20 @@ export default class Touchables extends Component {
     YellowBox.ignoreWarnings([
      'Warning: isMounted(...) is deprecated', 'Module RCTImageLoader'
    ]);
-  }
+    this.state = {
+      isShow: true,
+    }
+};
 
-  
   render() {
     return ( 
+     
       <View style={{flex: 1,flexDirection:'row'}}>
         <View style={styles.left_side}>
-           <Text style = {styles.classroom_name}> Classroom Not Found </Text>
+           <Text style = {styles.classroom_name}> {data[0]['classroom_name']} </Text>
            <View style={styles.header}>
-           <Text style = {styles.alert_bar}> Student Activities </Text>
-           <Text style = {styles.alert_bar2}> Student Presentation</Text>
+           <Text style = {styles.alert_bar}> {data[1]['activity_type']} </Text>
+           <Text style = {styles.alert_bar2}> {data[2]['activity']}</Text>
            </View>
            
            <View style={styles.classroomMapping}>
