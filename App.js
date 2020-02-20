@@ -3,8 +3,13 @@ import {ImageBackground, TextInput,  Button, Platform, StyleSheet, Text, PropTyp
 import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
 import styles from './style'
 
-const data = [{ classroom_name: "THN E316" }, { activity_type: "Instructor activities" }, { activity: "Instructor activities" }];
+const data = [{ classroom_name: "THN E316" }, { activity_type: "Instructor activities" }, { activity: "Lecturing" }];
 export default class Touchables extends Component {
+  setActivityType(type) {
+    this.setState({
+      activity_type: type
+    })
+  }
 
   _twoOptionAlertHandler=()=>{
     //function to make two option alert
@@ -29,7 +34,11 @@ export default class Touchables extends Component {
    ]);
     this.state = {
       isShow: true,
-    }
+      classroom_name: data[0]['classroom_name'],
+      activity_type: data[1]['activity_type'],
+      activity: data[2]['activity'],
+
+    };
 };
 
   render() {
@@ -37,10 +46,10 @@ export default class Touchables extends Component {
      
       <View style={{flex: 1,flexDirection:'row'}}>
         <View style={styles.left_side}>
-           <Text style = {styles.classroom_name}> {data[0]['classroom_name']} </Text>
+           <Text style = {styles.classroom_name}> {this.state.classroom_name} </Text>
            <View style={styles.header}>
-           <Text style = {styles.alert_bar}> {data[1]['activity_type']} </Text>
-           <Text style = {styles.alert_bar2}> {data[2]['activity']}</Text>
+           <Text style = {styles.alert_bar}> {this.state.activity_type} </Text>
+           <Text style = {styles.alert_bar2}> {this.state.activity}</Text>
            </View>
            
            <View style={styles.classroomMapping}>
@@ -77,7 +86,8 @@ export default class Touchables extends Component {
 
               {/* Instructor activity drop down button*/}
               <MenuProvider style={{ flexDirection: "column", padding: 30}}>
-                <Menu onSelect={value => alert(`You Clicked : ${value}`)}>
+                <Menu onSelect= {value => this.setActivityType(value)}>
+               
                 <MenuTrigger style={styles.activityButton} >
                   <Text style={styles.controlButtonText}>Instructor Activity</Text>
                 </MenuTrigger  >
