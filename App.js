@@ -5,9 +5,18 @@ import styles from './style'
 
 const data = [{ classroom_name: "THN E316" }, { activity_type: "Instructor activities" }, { activity: "Lecturing" }];
 export default class Touchables extends Component {
-  setActivityType(type) {
+
+  submitComment(){
+    var comment = this.state.comment;
+    var event = "Comment:" + comment;
+    this.updateEvent(event)
+  }
+  updateEvent(event){
+    var tempDate = new Date();
+    var curr_Time = tempDate.getHours()+':'+ tempDate.getMinutes()+':'+ tempDate.getSeconds();
+    const updatedActivity = "[" + curr_Time + "] Start of Event: " + event;
     this.setState({
-      activity_type: type
+      activity: updatedActivity
     })
   }
 
@@ -37,6 +46,7 @@ export default class Touchables extends Component {
       classroom_name: data[0]['classroom_name'],
       activity_type: data[1]['activity_type'],
       activity: data[2]['activity'],
+      comment: "",
 
     };
 };
@@ -76,7 +86,21 @@ export default class Touchables extends Component {
                 </View>
               </TouchableOpacity>
 
-              <TextInput style={styles.comment_box} placeholder="Enter Comment"></TextInput>
+              <TextInput
+              style={styles.comment_box} 
+              placeholder="Enter Comment"          
+              returnKeyLabel = {"next"}
+              onChangeText={(text) => this.setState({comment:text})}
+          >
+              
+
+          </TextInput>
+          <TouchableOpacity onPress={()=>{this.submitComment()}}
+        >
+                <View style={styles.commentButton}>
+                  <Text style={styles.controlButtonText}>SUBMIT</Text>
+                </View>
+              </TouchableOpacity>
 
             </View> 
         </View>
@@ -86,7 +110,7 @@ export default class Touchables extends Component {
 
               {/* Instructor activity drop down button*/}
               <MenuProvider style={{ flexDirection: "column", padding: 30}}>
-                <Menu onSelect= {value => this.setActivityType(value)}>
+                <Menu onSelect= {value => this.setState({activity_type: value })}>
                
                 <MenuTrigger style={styles.activityButton} >
                   <Text style={styles.controlButtonText}>Instructor Activity</Text>

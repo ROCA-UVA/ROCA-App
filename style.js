@@ -10,12 +10,12 @@ export default StyleSheet.create({
       },
     
       header: {
-        flex: 0.5, 
+        flex: 0.25, 
         backgroundColor: 'white',
         justifyContent: "center",
       
-        display: 'flex',
-        alignItems: "flex-end",
+        display: "flex",
+        alignItems: "center",
         flexDirection: "row",
         
       },
@@ -52,13 +52,14 @@ export default StyleSheet.create({
         // grid-column-start: 2,
         // grid-column-end:3,
         // height: '20px',
-        borderRadius: 100,
+        borderRadius: 20,
+        overflow: "hidden",
         width: "20%",
         padding: 10,
         backgroundColor: '#22AD1E',
         position: 'relative',
         display: 'flex',
-        alignItems: "flex-end",
+        alignItems: "center",
         /* IE10 */
         
         /* padding: 0 8px; */
@@ -75,7 +76,7 @@ export default StyleSheet.create({
       },
 
       alert_bar2: {
-        borderRadius: 100,
+        borderRadius: 20,
         color: 'white',
         // grid-column-start: 2,
         // grid-column-end:3,
@@ -85,9 +86,9 @@ export default StyleSheet.create({
         backgroundColor: '#3CCE3C',
         position: 'relative',
         display: 'flex',
-        alignItems: "flex-end",
+        alignItems: "center",
         /* IE10 */
-        
+        overflow: "hidden",
         /* padding: 0 8px; */
         // -webkit-box-align: center,
         // grid-auto-columns: 1fr,
@@ -97,7 +98,7 @@ export default StyleSheet.create({
         // grid-column-gap: 0px,
         // grid-row-gap: 30px,
         // margin-top: 10%,
-        textAlign: 'right',
+        textAlign: 'center',
         // width: 100%,
       },
 
@@ -144,6 +145,15 @@ export default StyleSheet.create({
         width:120,
         borderRadius:100,
         margin:10
+      },
+      commentButton:{
+        backgroundColor:'#232323',
+        marginBottom: 30,
+        
+        width:70,
+        borderRadius:100,
+        margin:10,
+        alignItems: 'center',
       },
     
       //Small, oval side button for durational activity 
