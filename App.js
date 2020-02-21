@@ -3,6 +3,7 @@ import {ImageBackground, TextInput,  Button, Platform, StyleSheet, Text, PropTyp
 import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
 import styles from './style'
 
+
 const data = [{ classroom_name: "THN E316" }, { activity_type: "Instructor activities" }, { activity: "Lecturing" }];
 export default class Touchables extends Component {
 
@@ -56,10 +57,12 @@ export default class Touchables extends Component {
      
       <View style={{flex: 1,flexDirection:'row'}}>
         <View style={styles.left_side}>
-           <Text style = {styles.classroom_name}> {this.state.classroom_name} </Text>
            <View style={styles.header}>
-           <Text style = {styles.alert_bar}> {this.state.activity_type} </Text>
-           <Text style = {styles.alert_bar2}> {this.state.activity}</Text>
+             <Text style = {styles.classroom_name}> {this.state.classroom_name} </Text>
+             <View style={styles.alert_bar}>
+              <Text style = {styles.alert_bar1}> {this.state.activity_type} </Text>
+              <Text style = {styles.alert_bar2}> {this.state.activity}</Text>
+           </View>
            </View>
            
            <View style={styles.classroomMapping}>

@@ -6,26 +6,27 @@ export default StyleSheet.create({
       },
     
       left_side: {
-        flex: 5 
+        flex: 5,
+        paddingHorizontal:10
       },
     
       header: {
-        flex: 0.25, 
+        flex: 0.5, 
         backgroundColor: 'white',
         justifyContent: "center",
-      
+        paddingTop:40,
         display: "flex",
         alignItems: "center",
-        flexDirection: "row",
+        flexDirection: "column",
         
       },
     
       classroomMapping: {
         flex: 3.5, 
-        backgroundColor: 'skyblue',
+        backgroundColor: 'white',
        
         justifyContent: 'center',
-        paddingTop: 60,
+        paddingTop: 10,
         alignItems: 'center'
       },
       comment_box: {
@@ -40,19 +41,32 @@ export default StyleSheet.create({
         borderRadius: 100,
         margin:10
       },
+
       classroom_name: {
           fontSize: 30,
           color: "black",
           fontWeight: "bold",
           paddingTop: 20,
+          alignSelf:'flex-start'
       },
     
+      // alertbar wrapper
       alert_bar: {
+        borderRadius: 20,
+        overflow: "hidden",
+        position: 'relative',
+        display: 'flex',
+        flexDirection: "row",
+        alignSelf:"flex-end",
+      },
+
+      // alertbar activity type styling
+      alert_bar1: {
         color: 'white',
         // grid-column-start: 2,
         // grid-column-end:3,
         // height: '20px',
-        borderRadius: 20,
+        // borderRadius: 20,
         overflow: "hidden",
         width: "20%",
         padding: 10,
@@ -71,18 +85,19 @@ export default StyleSheet.create({
         // grid-column-gap: 0px,
         // grid-row-gap: 30px,
         // margin-top: 10%,
-        textAlign: 'right',
+        textAlign: 'center',
         // width: 100%,
       },
 
+      // alert bar activity styling
       alert_bar2: {
-        borderRadius: 20,
+        // borderRadius: 20,
         color: 'white',
         // grid-column-start: 2,
         // grid-column-end:3,
         // height: '20px',
         padding: 10,
-        width: "80%",
+        width: "50%",
         backgroundColor: '#3CCE3C',
         position: 'relative',
         display: 'flex',
@@ -105,7 +120,7 @@ export default StyleSheet.create({
       bottom: {
         flex: 1, 
         flexDirection:'row',
-        backgroundColor: 'steelblue',
+        backgroundColor: 'lightgrey',
         justifyContent: 'flex-start',
         paddingTop: 30,
         alignItems: 'center'
