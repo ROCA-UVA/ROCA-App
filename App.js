@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Button, Animated, Platform, StyleSheet, Text, PropTypes,TouchableHighlight, TouchableOpacity, View,YellowBox,Alert } from 'react-native';
 import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
 import styles from './style'
-
-export default class Touchables extends Component {
+import Touchables from "./playRefreshStop"
+export default class App extends Component {
 
   _twoOptionAlertHandler=()=>{
     //function to make two option alert
@@ -36,6 +36,7 @@ export default class Touchables extends Component {
            <View style={styles.header} /> 
 
            <View style={styles.classroomMapping} />
+           <Touchables />
         </View>
 
         <View style={styles.right_side} >
