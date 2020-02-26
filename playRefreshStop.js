@@ -30,10 +30,6 @@ export default class Touchables extends Component {
 
   render() {
     return ( 
-      <View style={{flex: 1,flexDirection:'row'}}>
-        <View style={styles.left_side}>
-
-           <View style={styles.header} /> 
            <View style={styles.bottom}>
 
                {/* Play Button */}
@@ -52,8 +48,6 @@ export default class Touchables extends Component {
               </TouchableOpacity>
 
             </View> 
-        </View>
-      </View>
 
     );
   }
