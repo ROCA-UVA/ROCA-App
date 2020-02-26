@@ -36,25 +36,6 @@ export default class Touchables extends Component {
            <View style={styles.header} /> 
 
            <View style={styles.classroomMapping} />
-
-           <View style={styles.bottom}>
-
-               {/* Play Button */}
-               <TouchableOpacity >
-                <View style={styles.controlButton}>
-                  <Text style={styles.controlButtonText}>PLAY</Text>
-                </View>
-              </TouchableOpacity>
-
-
-               {/* Stop Button */}
-              <TouchableOpacity onPress={this._twoOptionAlertHandler}>
-                <View style={styles.controlButton}>
-                  <Text style={styles.controlButtonText}>STOP</Text>
-                </View>
-              </TouchableOpacity>
-
-            </View> 
         </View>
 
         <View style={styles.right_side} >
