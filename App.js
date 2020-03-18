@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import RightSide from './components/RightSide';
 import LeftSide from './components/LeftSide';
+import RightSide from './components/RightSide';
 
 export default function App() {
   return (
     <View style={{flex: 1, flexDirection: 'row'}}>
-      <RightSide />
       <LeftSide />
+      <RightSide />
     </View>
   );
 }
