@@ -12,8 +12,7 @@ export default function App() {
       <View>
         <View style={styles.fixToText}>
           <Button
-            title="Stop"
-            disabled
+            title="Play"
           />
         </View>
       </View>
