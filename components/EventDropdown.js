@@ -26,20 +26,23 @@ export default class EventDropdown extends Component {
           this.setState({ [name]: text });
 		});
 
+		this.sendData();
     }
 
     updateRef(name, ref) {
 	  this[name] = ref;
-    }
+
+	}
+	
+	//send data to RightSide class
+	sendData = () => {
+		this.props.parentCallback(this.state);
+   }
 
     render() {
-	  let {instructor} = this.state;
-	  let {student} = this.state;
-
 
       return (
-        <View >
-          <View>
+        <View >   
 
 			<Dropdown
 				ref={this.instructorRef}
@@ -57,49 +60,12 @@ export default class EventDropdown extends Component {
 				data={StudActiityData}
 				itemCount={3}
 			  />
-		
-          </View>
-
-          <View style={[styles.container, styles.textContainer]}>
-            <Text>{instructor}</Text>
-          </View>
-
-          <View style={[styles.container, styles.textContainer]}>
-            <Text>{student}</Text>
-          </View>
-
+		     
         </View>
       );
     }
   }
 
-
-
-const styles = {
-  container: {
-    marginHorizontal: 4,
-    marginVertical: 8,
-    paddingHorizontal: 8,
-  },
-
-
-  textContainer: {
-    backgroundColor: 'white',
-    borderRadius: 2,
-    padding: 16,
-    elevation: 1,
-    shadowRadius: 1,
-    shadowOpacity: 0.3,
-    justifyContent: 'center',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-  },
-
-
-
-};
 
   // Instructor Activity list
   const InstrActivityData = [
