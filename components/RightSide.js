@@ -3,7 +3,6 @@ import { View , StyleSheet} from 'react-native';
 import EventButton from './EventButton';
 import EventDropdown from './EventDropdown';
 
-//https://reactnativeexample.com/material-dropdown-with-consistent-behaviour-on-ios-and-android/
 
 export default function RightSide() {
 	return (
@@ -12,8 +11,7 @@ export default function RightSide() {
 			<View style={{flex: 1}}>
 
 
-				<EventDropdown type="Instructor" />
-				<EventDropdown type="Student" />
+				<EventDropdown />
 
 				<EventButton type="instantaneous" />
 				<EventButton type="durational" />

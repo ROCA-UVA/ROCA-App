@@ -1,59 +1,107 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 
 
 export default class EventDropdown extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			type: ''
-		}
-	}
+    constructor(props) {
+      super(props);
 
-    componentDidMount = () => {
-		this.setState({type: this.props.type})
-	}
+      this.onChangeText = this.onChangeText.bind(this);
 
-    
-	render() {
-		if (this.state.type == "Instructor") {
-			return <InstrActivity />
-        } 
-        else if  (this.state.type == "Student") {
-			return <StudActivity/>
-        }
-        else{
-            return <Text>Wrong type</Text>
-        }
-	}
-}
+	  this.instructorRef = this.updateRef.bind(this, 'instructor');
+	  this.studentRef = this.updateRef.bind(this, 'student');
 
-class InstrActivity extends Component {
-	render() {  
-	  return (
-		<Dropdown
-		  label='Instructor Activity'
-		  data={InstrActivityData}
-          itemCount={5}
-          dropdownPosition={0}
-		/>
-	  );
-	}
+      this.state = {
+		instructor: '',
+		student: '',
+      };
+    }
+
+    onChangeText(text) {
+      ['instructor','student']
+        .map((name) => ({ name, ref: this[name] }))
+        .filter(({ ref }) => ref && ref.isFocused())
+        .forEach(({ name, ref }) => {
+          this.setState({ [name]: text });
+		});
+
+    }
+
+    updateRef(name, ref) {
+	  this[name] = ref;
+    }
+
+    render() {
+	  let {instructor} = this.state;
+	  let {student} = this.state;
+
+
+      return (
+        <View >
+          <View>
+
+			<Dropdown
+				ref={this.instructorRef}
+				onChangeText={this.onChangeText}
+				label='Instructor Activity'
+				data={InstrActivityData}
+				itemCount={5}
+				dropdownPosition={0}
+			/>
+			
+			<Dropdown
+				ref={this.studentRef}
+				onChangeText={this.onChangeText}
+				label='Student Activity'
+				data={StudActiityData}
+				itemCount={3}
+			  />
+		
+          </View>
+
+          <View style={[styles.container, styles.textContainer]}>
+            <Text>{instructor}</Text>
+          </View>
+
+          <View style={[styles.container, styles.textContainer]}>
+            <Text>{student}</Text>
+          </View>
+
+        </View>
+      );
+    }
   }
 
-  class StudActivity extends Component {
-	render() {
-	  return (
-		<Dropdown
-		  label='Student Activity'
-		  data={StudActiityData}
-		  itemCount={3}
-		/>
-	  );
-	}
-  }
 
+
+const styles = {
+  container: {
+    marginHorizontal: 4,
+    marginVertical: 8,
+    paddingHorizontal: 8,
+  },
+
+
+  textContainer: {
+    backgroundColor: 'white',
+    borderRadius: 2,
+    padding: 16,
+    elevation: 1,
+    shadowRadius: 1,
+    shadowOpacity: 0.3,
+    justifyContent: 'center',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+  },
+
+
+
+};
+
+  // Instructor Activity list
   const InstrActivityData = [
     { value: 'Lecturing' },
     { value: 'Group Discussion' },
@@ -62,6 +110,7 @@ class InstrActivity extends Component {
     { value: 'Idle' },
   ];
 
+  // Student Activity list
   const StudActiityData = [
     { value: 'Group work' },
     { value: 'Individual work' },
