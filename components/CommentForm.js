@@ -5,10 +5,10 @@ export default function UselessTextInput() {
   const [value, onChangeText] = React.useState('Type comment');
 
   return (
-    <TextInput
-      style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-      onChangeText={text => onChangeText(text)}
-      value={value}
-    />
+      <TextInput
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        onChangeText={text => onChangeText(text)}
+        value={value}
+      />
   );
 }

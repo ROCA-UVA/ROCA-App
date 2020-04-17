@@ -12,7 +12,22 @@ export default function App() {
       <View>
         <View style={styles.fixToText}>
           <Button
+            title="Stop"
+            disabled
+          />
+        </View>
+      </View>
+      <View>
+        <View style={styles.fixToText}>
+          <Button
             title="Play"
+          />
+        </View>
+      </View>
+      <View>
+        <View style={styles.fixToText}>
+          <Button
+            title="Refresh"
           />
         </View>
       </View>
@@ -25,6 +40,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: Constants.statusBarHeight,
     marginHorizontal: 16,
+    flexDirection:"row",
   },
   title: {
     textAlign: 'center',
