@@ -4,10 +4,14 @@ import { View, Text, StyleSheet } from 'react-native';
 export default class FeedbackBar extends Component {
 	render() {
 		return (
-			<View style={{flex: 1, backgroundColor: 'steelblue', padding:10}}>
-				<View style = {styles.feedbackBar} >
-					<Text style = {styles.fb_section1}>Activity type</Text>
-					<Text style = {styles.fb_section2}>Activity name</Text>
+			<View style={styles.feedbackBox}>
+				<View style={styles.feedbackBar}>
+					<View style={styles.feedbackActivity}>
+						<Text numberOfLines={1} style={styles.feedbackText}>Select an activity</Text>
+					</View>
+					<View style={styles.feedbackEvent}>
+						<Text numberOfLines={1} style={styles.feedbackText}>Start recording events</Text>
+					</View>
 				</View> 
 			</View>
 		);
@@ -16,36 +20,31 @@ export default class FeedbackBar extends Component {
 
 
 const styles = StyleSheet.create({
+	feedbackBox: {
+		flex: 1,
+		backgroundColor: 'steelblue',
+		padding: 10,
+	},
 	feedbackBar: {
-        borderRadius: 20,
-        overflow: "hidden",
-        position: 'relative',
-        display: 'flex',
-        flexDirection: "row",
-		alignSelf:"flex-end",
+		flex: 1,
+		flexDirection: 'row',
+		backgroundColor: '#3CCE3C',
+		borderRadius: 100,
 	},
-
-	fb_section1: {
-        color: 'white',
-        overflow: "hidden",
-        width: "20%",
-        padding: 10,
-        backgroundColor: '#22AD1E',
-        position: 'relative',
-        display: 'flex',
-		alignItems: "center",
+	feedbackActivity: {
+		flex: 2,
+		borderRadius: 100,
+		justifyContent: 'center',
+		padding: 10,
+		backgroundColor: '#22AD1E',
+	},
+	feedbackEvent: {
+		flex: 8,
+		justifyContent: 'center',
+		padding: 10,
+	},
+	feedbackText: {
 		textAlign: 'center',
-	},
-
-	fb_section2: {
 		color: 'white',
-        padding: 10,
-        width: "50%",
-        backgroundColor: '#3CCE3C',
-        position: 'relative',
-        display: 'flex',
-        alignItems: "center",
-        overflow: "hidden",
-        textAlign: 'center',
 	}
 });
