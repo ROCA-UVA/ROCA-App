@@ -4,6 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import LeftSide from './components/LeftSide';
 import RightSide from './components/RightSide';
 
+import LocalData from './components/LocalData';
+
 export default function App() {
   return (
     <View style={{flex: 1, flexDirection: 'row'}}>
