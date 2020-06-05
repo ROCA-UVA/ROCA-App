@@ -7,9 +7,11 @@ export default class Bottom extends Component {
 	render() {
 		return (
 			<View style={{flex: 1, flexDirection: 'row', backgroundColor: 'pink'}}>
-                <ControllerButtons/>
-                <CommentForm/>
+				<ControllerButtons type="Start" />
+				<ControllerButtons type="Reset" />
+				<CommentForm/>
 			</View>
+
 		);
 	}
 }
