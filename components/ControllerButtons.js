@@ -10,7 +10,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-        <View style={styles.fixToText}>
+        <View style={styles.button}>
           <Button
             title="Stop"
             disabled
@@ -18,19 +18,20 @@ export default function App() {
         </View>
       </View>
       <View>
-        <View style={styles.fixToText}>
+        <View style={styles.button}>
           <Button
             title="Play"
           />
         </View>
       </View>
       <View>
-        <View style={styles.fixToText}>
+        <View style={styles.button} >
           <Button
-            title="Refresh"
+            title="Reset"
           />
         </View>
       </View>
+
     </SafeAreaView>
   );
 }
@@ -49,5 +50,11 @@ const styles = StyleSheet.create({
   fixToText: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-  }
+  },
+  button: {
+    backgroundColor: 'black',
+    borderRadius: 100,
+    padding: 10,
+    overflow: 'hidden'
+}
 });

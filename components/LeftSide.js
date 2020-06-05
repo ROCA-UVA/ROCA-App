@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import FeedbackBar from './FeedbackBar';
 import ClassroomImage from './ClassroomImage';
-import Bottom from './Controller';
+import Bottom from './Bottom';
 
 export default function LeftSide() {
 	return (
