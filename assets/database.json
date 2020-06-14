@@ -49,5 +49,14 @@
 			{"title": "Makes prediction", "code": "PREDICT", "type": "instantaneous", "dependencies": [0, 1, 5, 6, 7]},
 			{"title": "Whole class responds", "code": "WHOLE CLASS ANS", "type": "instantaneous", "dependencies": [0, 1, 2, 3, 7]}
 		]	
-	}
+	},
+	"rooms": [
+		{"name": "MCL-1020"},
+		{"name": "MEC-341"},
+		{"name": "MIN-130"},
+		{"name": "RICE-130"},
+		{"name": "THN-E303"},
+		{"name": "THN-E316"},
+		{"name": "WIL-402"}
+	]
 }
