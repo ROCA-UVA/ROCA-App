@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.2.0",
+    "@react-native-community/picker": "^1.6.3",
     "expo": "~36.0.0",
     "native-base": "2.13.8",
     "react": "~16.9.0",

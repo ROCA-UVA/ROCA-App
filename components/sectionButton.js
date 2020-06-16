@@ -1,69 +1,30 @@
-import React, { useState } from 'react';
-import onClickOutside from 'react-onclickoutside';
+import React, { Component } from 'react';
+import { View, Text, Picker, StyleSheet } from 'react-native'
 
-function Dropdown({ title, items, multiSelect = false }) {
-  const [open, setOpen] = useState(false);
-  const [selection, setSelection] = useState([]);
-  const toggle = () => setOpen(!open);
-  Dropdown.handleClickOutside = () => setOpen(false);
-
-  function handleOnClick(item) {
-    if (!selection.some(current => current.id === item.id)) {
-      if (!multiSelect) {
-        setSelection([item]);
-      } else if (multiSelect) {
-        setSelection([...selection, item]);
-      }
-    } else {
-      let selectionAfterRemoval = selection;
-      selectionAfterRemoval = selectionAfterRemoval.filter(
-        current => current.id !== item.id
-      );
-      setSelection([...selectionAfterRemoval]);
-    }
-  }
-
-  function isItemInSelection(item) {
-    if (selection.some(current => current.id === item.id)) {
-      return true;
-    }
-    return false;
-  }
-
-  return (
-    <div className="dd-wrapper">
-      <div
-        tabIndex={0}
-        className="dd-header"
-        role="button"
-        onKeyPress={() => toggle(!open)}
-        onClick={() => toggle(!open)}
-      >
-        <div className="dd-header__title">
-          <p className="dd-header__title--bold">{title}</p>
-        </div>
-        <div className="dd-header__action">
-          <p>{open ? 'Close' : 'Open'}</p>
-        </div>
-      </div>
-      {open && (
-        <ul className="dd-list">
-          {items.map(item => (
-            <li className="dd-list-item" key={item.id}>
-              <button type="button" onClick={() => handleOnClick(item)}>
-                <span>{item.value}</span>
-                <span>{isItemInSelection(item) && 'Selected'}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+class SectionButton extends Component {
+   state = {section: ''}
+   updateSection = (section) => {
+      this.setState({ section: section })
+   }
+   render() {
+      return (
+         <View>
+            <Text>Select Section</Text>
+            <Picker selectedValue = {this.state.user} onValueChange = {this.updateUser} style={{height: 20, width: 100}}>
+               <Picker.Item label = "1" value = "1" />
+               <Picker.Item label = "2" value = "2" />
+               <Picker.Item label = "3" value = "3" />
+            </Picker>
+            <Text style = {styles.text}>{this.state.section}</Text>
+         </View>
+      )
+   }
 }
+export default SectionButton
 
-const clickOutsideConfig = {
-  handleClickOutside: () => Dropdown.handleClickOutside,
-};
-
-export default onClickOutside(Dropdown, clickOutsideConfig);
+const styles = StyleSheet.create({
+   text: {
+      fontSize: 30,
+      color: 'red'
+   }
+})
