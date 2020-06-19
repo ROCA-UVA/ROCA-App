@@ -6,7 +6,7 @@ export default function UselessTextInput() {
 
   return (
       <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1,}}
         onChangeText={text => onChangeText(text)}
         value={value}
       />

@@ -27,19 +27,31 @@ export default class ControllerButtons extends Component {
 }
 
 class StartEvent extends Component {
+
 	constructor(props) {
 		super(props);
 		this.state = {
 			active: false,
-      style: styles.buttonActive,
-      status :"Start"
-		}
+      		style: styles.buttonActive,
+			status :"Start",
+			showText: true ,
+		};
+		setInterval(() => {
+			if (this.state.status == "Start"){ 
+				this.setState(previousState => {
+				return { showText: !previousState.showText };
+				});
+			}
+		  },
+		  1000 // define blinking time in miliseconds
+		);
 	}
 
 	handlePress = () => {
     if (this.state.status == "Start"){ //after pressing start
-      this.setState({active: true});
-      this.setState({status: "Stop"});
+	  this.setState({active: true,
+					status:"Stop",
+					showText:false});
     }
     else if (this.state.status == "Stop"){ // After pressing stop
       Alert.alert(
@@ -69,9 +81,10 @@ class StartEvent extends Component {
 	}
 
 	render() {
-
+		let stateColor = this.state.showText ? '#22AD1E' : 'transparent';
 		return (
-			<Button title={this.state.status} buttonStyle={[styles.button, this.state.active && this.state.style]} onPress={this.handlePress} />
+			<Button title={this.state.status} style={ {backgroundColor: stateColor, padding:5}}  
+											buttonStyle={[styles.button, this.state.active && this.state.style]} onPress={this.handlePress} />
 		)
 	}
 }
@@ -96,22 +109,32 @@ class ResetEvent extends Component {
 
 	render() {
 		return (
-			<Button title="Reset" buttonStyle={styles.button} onPress={this.resetAlert} />
+			<Button title="Reset" style={ { padding:5}} buttonStyle={styles.button} onPress={this.resetAlert} />
 		)
 	}
 }
+
+
 
 const styles = StyleSheet.create({
 	button: {
 		backgroundColor: 'black',
 		borderRadius: 100,
-		padding: 10,
-		overflow: 'hidden'
+
+		overflow: 'hidden',
+		width:100,
 	},
 	buttonActive: {
 		backgroundColor: 'red',
-  },
-  startActive: {
-		backgroundColor: 'red',
-	}
+  	},
+	  OvalShapeView: {
+		marginTop: 20,
+		width: 100,
+		height: 100,
+		backgroundColor: 'blue',
+		borderRadius: 50,
+		transform: [
+		  {scaleX: 2}
+		]
+	  },
 });
