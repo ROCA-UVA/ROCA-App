@@ -1,7 +1,7 @@
 import React, { Component,useState } from 'react';
 import { View, StyleSheet,Alert } from 'react-native';
 import { Button } from 'react-native-elements';
-
+import { FontAwesome } from '@expo/vector-icons';
 
 export default class ControllerButtons extends Component {
 	constructor(props) {
@@ -106,7 +106,9 @@ const styles = StyleSheet.create({
 		backgroundColor: 'black',
 		borderRadius: 100,
 		padding: 10,
-		overflow: 'hidden'
+		overflow: 'hidden',
+		width: 100,
+		margin: '.5em',
 	},
 	buttonActive: {
 		backgroundColor: 'red',

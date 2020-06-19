@@ -58,7 +58,9 @@ const styles = StyleSheet.create({
 		backgroundColor: 'black',
 		borderRadius: 100,
 		padding: 10,
-		overflow: 'hidden'
+		overflow: 'hidden',
+		height: 30,
+		width: 150
 	},
 	buttonActive: {
 		backgroundColor: 'red',
