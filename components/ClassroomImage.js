@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
 export default function ClassroomImage(props) {
+	const [classroomURI, setClassroomURI] = useState()
+
+	useEffect(() => {
+		setClassroomURI(props.uri)
+	})
+
 	return (
 		<View style={styles.imageContainer}>
 			<Image 
-				source={require('../assets/images/RICE-130.jpg')}
+				source={classroomURI}
 				style={styles.image}
 			/>
 		</View>

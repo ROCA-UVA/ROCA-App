@@ -7,7 +7,7 @@ var activity = 0;
 try {
 	AsyncStorage.setItem('protocol', JSON.stringify(protocol))
 	AsyncStorage.setItem('activity', JSON.stringify(activity))
-	AsyncStorage.setItem('classroom', 'none selected')
+	AsyncStorage.setItem('classroom', JSON.stringify({name: 'none selected', uri: {}}))
 } catch (error) {
 	alert(error)
 }

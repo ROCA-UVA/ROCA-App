@@ -2,20 +2,24 @@ import React, { Component, useState, useEffect } from 'react';
 import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
 
 import FeedbackBar from './FeedbackBar';
-import ClassroomImage from './ClassroomImage';
 import ModalMenu from './ModalMenu';
+import ClassroomImage from './ClassroomImage';
+import ClassroomData from  './ClassroomData';
 
 export default function Leftside() {
-	const [classroom, setClassroom] = useState("")
+	const [classroomName, setClassroomName] = useState("")
+	const [classroomURI, setClassroomURI] = useState()
 	const [classroomList, setClassroomList] = useState([])
 
 	useEffect(() => {
 		async function loadData() {
 			try {
-				setClassroom(await AsyncStorage.getItem('classroom'))
+				const raw = await AsyncStorage.getItem('classroom')
+				const parsed = JSON.parse(raw)
 
-				let protocol = await AsyncStorage.getItem('protocol')
-				setClassroomList(JSON.parse(protocol).rooms)
+				setClassroomName(parsed.name)
+				setClassroomURI(parsed.uri)
+				setClassroomList(ClassroomData)
 			} catch (error) {
 				alert(error)
 			}
@@ -25,8 +29,9 @@ export default function Leftside() {
 	}, [])
 
 	async function handleModalSelect(params) {
-		setClassroom(params.name)
-		await AsyncStorage.setItem('classroom', params.name)
+		setClassroomName(params.name)
+		setClassroomURI(params.uri)
+		await AsyncStorage.setItem('classroom', JSON.stringify({name: params.name, uri: params.uri}))
 	}
 
 	return (
@@ -34,7 +39,7 @@ export default function Leftside() {
 			<View style={{flex: 1, flexDirection: 'row'}}>
 				<Text style={styles.title}>Classroom:</Text>
 				<ModalMenu 
-					label={classroom} 
+					label={classroomName} 
 					style={[styles.title, {textDecorationLine: 'underline'}]} 
 					modalHeading='Select a classroom' 
 					modalItem={classroomList}
@@ -42,8 +47,8 @@ export default function Leftside() {
 				/>
 			</View>
 			<FeedbackBar />
-			<ClassroomImage />
-			<View style={{flex: 6, backgroundColor: 'pink'}}>
+			<ClassroomImage uri={classroomURI} />
+			<View style={{flex: 3, backgroundColor: 'pink'}}>
 			</View>
 		</View>
 	)
