@@ -20,7 +20,7 @@ export default function ClassroomImage(props) {
 
 const styles = StyleSheet.create({
 	imageContainer: {
-		flex: 5,
+		flex: 9,
 		backgroundColor: 'white',
 		justifyContent: 'center',
 	},

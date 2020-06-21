@@ -36,7 +36,7 @@ export default function Leftside() {
 
 	return (
 		<View style={{flex: 5, backgroundColor: 'skyblue'}}>
-			<View style={{flex: 1, flexDirection: 'row'}}>
+			<View style={{flex: 2, flexDirection: 'row'}}>
 				<Text style={styles.title}>Classroom:</Text>
 				<ModalMenu 
 					label={classroomName} 
@@ -48,7 +48,7 @@ export default function Leftside() {
 			</View>
 			<FeedbackBar />
 			<ClassroomImage uri={classroomURI} />
-			<View style={{flex: 3, backgroundColor: 'pink'}}>
+			<View style={{flex: 6, backgroundColor: 'pink'}}>
 			</View>
 		</View>
 	)
