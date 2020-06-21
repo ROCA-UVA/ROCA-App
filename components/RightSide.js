@@ -26,7 +26,7 @@ export default class RightSide extends Component {
 			this.setState({activity: JSON.parse(activity_code)})
 
 			const protocol = await AsyncStorage.getItem('protocol')
-			this.setState({events: JSON.parse(protocol).events})
+			this.setState({events: JSON.parse(protocol).a_events})
 		} catch (error) {
 			alert(error)
 		}
@@ -34,16 +34,14 @@ export default class RightSide extends Component {
 
 	getEventData = (type, event) => {
 		if (event.dependencies.includes(this.state.activity)) {
-			if (type != "student" || (type == "student" && event.type != "instantaneous")) {
-				return <EventButton type={event.type} title={event.title} />
-			}
+			return <EventButton type={event.type} title={event.title} key={event.code} />
 		}
 	}
 
 	getEventTypes = () => {
 		return Object.keys(this.state.events).map((type) => {
 			return [
-				<Text>{type}</Text>,
+				<Text key={type}>{type}</Text>,
 				this.state.events[type].map((event) => {
 					return this.getEventData(type, event)
 				})

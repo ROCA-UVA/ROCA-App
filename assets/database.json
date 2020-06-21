@@ -1,62 +1,74 @@
 {
 	"activities": {
 		"instructor": [
-			{"title": "Lecturing", "code": "LEC", "key": 0},
-			{"title": "Group discussion", "code": "GD", "key": 1},
-			{"title": "Administrative task", "code": "ADMIN", "key": 2},
-			{"title": "Media", "code": "MED", "key": 3},
-			{"title": "Idle", "code": "IDL", "key": 4}
+			{"title": "Lecturing", "code": "LEC", "key": 1},
+			{"title": "Group Discussion", "code": "G-DIS", "key": 2},
+			{"title": "Administrative Task", "code": "ADM", "key": 3},
+			{"title": "Media", "code": "MED", "key": 4},
+			{"title": "Idle", "code": "IDL", "key": 5}
 		],
 		"student": [
-			{"title": "Group work", "code": "GW", "key": 5},
-			{"title": "Individual work", "code": "IW", "key": 6},
-			{"title": "Presentation", "code": "PRES", "key": 7}
+			{"title": "Group Work", "code": "G-WK", "key": 6},
+			{"title": "Individual Work", "code": "I-WK", "key": 7},
+			{"title": "Presentation", "code": "PRS", "key": 8}
 		]
 	},
-	"events": {
+	"a_events": {
 		"instructor": [
-			{"title": "Problems", "code": "PROB", "type": "durational", "dependencies": [0, 1, 2, 5, 6]},
-			{"title": "Writing", "code": "WRITE", "type": "durational", "dependencies": [0, 1, 2, 5, 6]},
-			{"title": "Pre-made materials", "code": "PRE-MADE", "type": "durational", "dependencies": [0, 1, 2, 3, 5, 6]},
-			{"title": "Live action", "code": "LIVE", "type": "durational", "dependencies": [0, 1, 6]},
-			{"title": "Class feedback", "code": "FEEDBK", "type": "durational", "dependencies": [0, 1, 5, 6]},
-			{"title": "Monitoring", "code": "MONIT", "type": "durational", "dependencies": [1, 3, 5, 6, 7]},
-			{"title": "Moving in groups", "code": "MOVE IN GRP", "type": "durational", "dependencies": [1, 5]},
-			{"title": "Poses questions", "code": "POSE Q", "type": "instantaneous", "dependencies": [0, 1, 2]},
-			{"title": "Comprehension question", "code": "COMP Q", "type": "instantaneous", "dependencies": [0, 1, 2, 5, 6]},
-			{"title": "Rhetorical question", "code": "RHETORIC Q", "type": "instantaneous", "dependencies": [0, 1]},
-			{"title": "Answers question", "code": "ANSWER Q", "type": "instantaneous", "dependencies": [0, 1, 2, 5, 6, 7]},
-			{"title": "Individual feedback", "code": "IND FEEDBK", "type": "instantaneous", "dependencies": [0, 1, 2, 5, 6, 7]},
-			{"title": "Uses humor", "code": "HUMOR", "type": "instantaneous", "dependencies": [0, 1, 2, 5, 6, 7]},
-			{"title": "Uses emphasis", "code": "EMPHASIS", "type": "instantaneous", "dependencies": [0, 1, 2, 5, 6, 7]}
+			{"title": "Problems", "code": "PRB", "type": "durational", "dependencies": [1, 2, 3, 6, 7]},
+			{"title": "Writing", "code": "WRT", "type": "durational", "dependencies": [1, 2, 3, 6, 7]},
+			{"title": "Pre-made Materials", "code": "PRE-M", "type": "durational", "dependencies": [1, 2, 3, 4, 6, 7]},
+			{"title": "Live Action", "code": "IL-ACT", "type": "durational", "dependencies": [1, 2, 7]},
+			{"title": "Class Feedback", "code": "C-FDB", "type": "durational", "dependencies": [1, 2, 6, 7]},
+			{"title": "Monitoring", "code": "MNT", "type": "durational", "dependencies": [2, 4, 6, 7, 8]},
+			{"title": "Moving", "code": "MOV", "type": "durational", "dependencies": [2, 6]},
+			{"title": "Engaging", "code": "ENG", "type": "durational", "dependencies": [1, 2, 3, 6, 7, 8]},
+			{"title": "Poses Question", "code": "POS-Q", "type": "instantaneous", "dependencies": [1, 2, 3]},
+			{"title": "Comprehension Question", "code": "COM-Q", "type": "instantaneous", "dependencies": [1, 2, 3, 6, 7]},
+			{"title": "Rhetorical Question", "code": "RHE-Q", "type": "instantaneous", "dependencies": [1, 21]},
+			{"title": "Answers Question", "code": "ANS-Q", "type": "instantaneous", "dependencies": [1, 2, 3, 6, 7, 8]},
+			{"title": "Individual Feedback", "code": "I-FDB", "type": "instantaneous", "dependencies": [1, 2, 3, 6, 7, 8]},
+			{"title": "Uses Humor", "code": "HUM", "type": "instantaneous", "dependencies": [1, 2, 3, 6, 7, 8]},
+			{"title": "Uses Emphasis", "code": "EMP", "type": "instantaneous", "dependencies": [1, 2, 3, 6, 7, 8]}
 		],
 		"technology": [
-			{"title": "Non-digital", "code": "NON-DIGIT", "type": "durational", "dependencies": [0, 1, 2, 5, 6, 7]},
-			{"title": "Digital", "code": "DIGIT", "type": "durational", "dependencies": [0, 1, 2, 3, 5, 6, 7]},
-			{"title": "Projection", "code": "PROJECT", "type": "durational", "dependencies": [0, 1, 2, 3, 5, 6, 7]},
-			{"title": "Response system", "code": "RESP SYS", "type": "durational", "dependencies": [0, 1, 5, 6, 7]},
-			{"title": "Website", "code": "WEB", "type": "durational", "dependencies": [0, 1, 2, 3, 5, 6, 7]}
+			{"title": "Digital", "code": "DIG", "type": "durational", "dependencies": [2, 3, 4, 6, 7, 8]},
+			{"title": "Response System", "code": "R-SYS", "type": "durational", "dependencies": [1, 2, 6, 7, 8]},
+			{"title": "Website", "code": "WEB", "type": "durational", "dependencies": [1, 2, 3, 4, 6, 7, 8]}
 		],
 		"student": [
-			{"title": "Structured work", "code": "STRC WK", "type": "durational", "dependencies": [0, 1, 2, 5, 6, 7]},
-			{"title": "Informal discussion", "code": "INF DISC", "type": "durational", "dependencies": [0, 1, 2, 5, 7]},
-			{"title": "Live action", "code": "LIVE", "type": "durational", "dependencies": [0, 1, 2, 5, 7]},
-			{"title": "Taking notes", "code": "NOTES", "type": "durational", "dependencies": [0, 1, 2, 3, 5, 6, 7]},
-			{"title": "Distracted", "code": "DISTRACT", "type": "durational", "dependencies": [0, 1, 2, 3, 5, 6, 7]},
-			{"title": "Asks a question", "code": "ASKS Q", "type": "instantaneous", "dependencies": [0, 1, 2, 3, 5, 6, 7]},
-			{"title": "Responds to instructor", "code": "RESPOND TO I", "type": "instantaneous", "dependencies": [0, 1, 2, 3, 5, 6, 7]},
-			{"title": "Responds to another student", "code": "RESPOND TO S", "type": "instantaneous", "dependencies": [0, 1, 2, 3, 5, 6, 7]},
-			{"title": "Makes prediction", "code": "PREDICT", "type": "instantaneous", "dependencies": [0, 1, 5, 6, 7]},
-			{"title": "Whole class responds", "code": "WHOLE CLASS ANS", "type": "instantaneous", "dependencies": [0, 1, 2, 3, 7]}
+			{"title": "Structured Work", "code": "STR-W", "type": "durational", "dependencies": [1, 2, 3, 6, 7, 8]},
+			{"title": "Informal Discussion", "code": "I-DSC", "type": "durational", "dependencies": [1, 2, 3, 6, 8]},
+			{"title": "Live Action", "code": "SL-ACT", "type": "durational", "dependencies": [1, 2, 3, 6, 8]},
+			{"title": "Taking Notes", "code": "T-NOT", "type": "durational", "dependencies": [1, 2, 3, 4, 6, 7, 8]},
+			{"title": "Distracted", "code": "DSR", "type": "durational", "dependencies": [1, 2, 3, 4, 6, 7, 8]},
+			{"title": "Whole Class Response", "code": "WCR", "type": "durational", "dependencies": [1, 2, 3, 7]}
 		]	
 	},
+	"z_events": {
+		"instructor": [
+			{"title": "Asks a Question", "code": "ASK-Q", "type": "instantaneous", "dependencies": [1, 2, 3, 4, 6, 7, 8]},
+			{"title": "Responds to Instructor", "code": "RSP-I", "type": "instantaneous", "dependencies": [1, 2, 3, 4, 6, 7, 8]},
+			{"title": "Responds to Student", "code": "RSP-S", "type": "instantaneous", "dependencies": [1, 2, 3, 4, 6, 7, 8]},
+			{"title": "Makes Prediction", "code": "PRD", "type": "instantaneous", "dependencies": [1, 2, 6, 7, 8]}
+		],
+		"student": [
+
+		]
+	},
 	"rooms": [
-		{"name": "MCL-1020"},
-		{"name": "MEC-341"},
-		{"name": "MIN-130"},
-		{"name": "RICE-130"},
-		{"name": "THN-E303"},
-		{"name": "THN-E316"},
-		{"name": "WIL-402"}
+		{"name": "THN E316", "z1": [1,1,8,6], "z2": [8,0,13,5], "z3": [8,5,13,7], "z4": [13,0,19,5], "z5": [13,5,19,7], "z6": [19,1,26,6], "key": 1},
+		{"name": "THN E303", "z1": [0,0,14,6], "z2": [14,0,27,6], "z3": [5,6,14,7], "z4": [14,6,23,7], "z5": [8,7,14,8], "z6": [14,7,19,8], "key": 2},
+		{"name": "RICE 130", "key": 3},
+		{"name": "CHM 402", "key": 4},
+		{"name": "OLS 011", "key": 5},
+		{"name": "PHY 203", "key": 6},
+		{"name": "BME 1041", "key": 7},
+		{"name": "RFN 179", "key": 8},
+		{"name": "RFN G004", "key": 9},
+		{"name": "MEC 214", "key": 10},
+		{"name": "PHY 204", "key": 11},
+		{"name": "THN A120", "z1": [1,4,5,7], "z2": [5,4,10,7], "z3": [13,5,21,8], "z4": [11,1,28,5], "key": 12},
+		{"name": "BRN 334", "key": 13},
 	]
 }
