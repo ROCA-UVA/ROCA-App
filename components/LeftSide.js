@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import FeedbackBar from './FeedbackBar';
 import ClassroomImage from './ClassroomImage';
+import Control from './Control';
 
 export default function LeftSide() {
 	return (
@@ -13,6 +14,7 @@ export default function LeftSide() {
 			<FeedbackBar />
 			<ClassroomImage />
 			<View style={{flex: 6, backgroundColor: 'pink'}}>
+			<Control/>
 			</View>
 		</View>
 	);

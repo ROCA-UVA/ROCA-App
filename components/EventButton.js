@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 
 export default class EventButton extends Component {
@@ -20,7 +20,14 @@ export default class EventButton extends Component {
 		} else if (this.state.type == "durational") {
 			return <DurationalEvent />
 		} else {
-			return <Button title="event type not found" disabled={true} buttonStyle={styles.button} />
+			return <Button 
+						titleStyle={{
+							color: "white",
+							fontSize: 16,
+						}}
+						title="event type not found" 
+						disabled={true} 
+						buttonStyle={styles.button} />
 		}
 	}
 }
@@ -28,7 +35,13 @@ export default class EventButton extends Component {
 class InstantaneousEvent extends Component {
 	render() {
 		return (
-			<Button title="instantaneous" buttonStyle={styles.button} />
+			<Button
+				titleStyle={{
+					color: "white",
+					fontSize: 16,
+				}}
+   				buttonStyle={styles.button}
+   				title="instantaneous" />
 		)
 	}
 }
@@ -48,17 +61,27 @@ class DurationalEvent extends Component {
 
 	render() {
 		return (
-			<Button title="durational" buttonStyle={[styles.button, this.state.active && this.state.style]} onPress={this.handlePress} />
+			<Button 
+				titleStyle={{
+					color: "white",
+					fontSize: 16,
+				}}
+				title="durational" 
+				buttonStyle={[styles.button, this.state.active && this.state.style]} 
+				onPress={this.handlePress} />
 		)
 	}
 }
 
 const styles = StyleSheet.create({
 	button: {
-		backgroundColor: 'black',
+		backgroundColor: '#333232',
 		borderRadius: 100,
 		padding: 10,
-		overflow: 'hidden'
+		overflow: 'hidden',
+		width: 140,
+		height: 40,
+		margin: 11,
 	},
 	buttonActive: {
 		backgroundColor: 'red',
