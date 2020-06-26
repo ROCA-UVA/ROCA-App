@@ -13,7 +13,13 @@ export default class ClassroomImage extends Component {
 				<View style={styles.rectangle4}></View>
 				<View style={styles.rectangle5}></View>
 				<View style={styles.rectangle6}></View>
-				<img src={require('../assets/THN-E316.jpg')} />
+				{/* <img src={require('../assets/THN-E316.jpg')} /> */}
+				{/* <Image
+					source={
+					require(
+						'../assets/THN-E316.jpg')
+					}
+				/> */}
 			</View>
 		);
 	}
