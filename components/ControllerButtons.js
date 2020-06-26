@@ -108,7 +108,6 @@ const styles = StyleSheet.create({
 		padding: 10,
 		overflow: 'hidden',
 		width: 100,
-		margin: '.5em',
 	},
 	buttonActive: {
 		backgroundColor: 'red',

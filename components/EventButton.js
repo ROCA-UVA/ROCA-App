@@ -55,12 +55,13 @@ class DurationalEvent extends Component {
 
 const styles = StyleSheet.create({
 	button: {
-		backgroundColor: 'black',
+		backgroundColor: '#282828',
 		borderRadius: 100,
 		padding: 10,
 		overflow: 'hidden',
 		height: 30,
-		width: 150
+		width: 90,
+		fontSize: 20
 	},
 	buttonActive: {
 		backgroundColor: 'red',

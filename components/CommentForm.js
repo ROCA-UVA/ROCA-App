@@ -16,6 +16,6 @@ export default function UselessTextInput() {
 const styles = StyleSheet.create({
 	input: {
 		width: 100,
-		margin: '.5em',
+		//margin: '.5em',
 	},
 });

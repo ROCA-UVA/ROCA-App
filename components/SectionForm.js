@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import ControllerButtons from './ControllerButtons';
-import CommentForm from './CommentForm';
-import SectionButton from './SectionButton';
-import EventButton from './EventButton';
+import PropTypes from 'prop-types'
+import { Text, TouchableHighlight, View, StyleSheet } from 'react-native';
+import CircleCheckBox, {LABEL_POSITION} from 'react-native-circle-checkbox';  
 
 export default class SectionForm extends Component {
+	state = { checked: false };
+	onToggle = checked => this.setState({ checked });
+
 	render() {
+		const { checked } = this.state;
 		return (
-			<View>
-				<SectionButton/>
+			<View style={{flex: 1, flexDirection: 'col', backgroundColor: 'pink'}}>
+				<CircleCheckBox
+				checked={checked}
+				outerColor={'#282828'}
+				innerColor={'#282828'}
+				onToggle={this.onToggle}
+				labelPosition={LABEL_POSITION.LEFT}
+				label="1"
+				/>
 			</View>
 		);
 	}
 }
 
+const styles = StyleSheet.create({
+
+});
