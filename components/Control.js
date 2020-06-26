@@ -15,11 +15,11 @@ export default class Control extends Component {
 					<CommentForm/>
 				</View>
 				<View style={{flex: 2, flexDirection: 'row', backgroundColor: 'pink'}}>
-				<SectionForm/>
-				<SectionForm/>
-				<SectionForm/>
-				<SectionForm/>
-				<SectionForm/>
+					<SectionForm/>
+					<SectionForm/>
+					<SectionForm/>
+					<SectionForm/>
+					<SectionForm/>
 				</View>
 
 				<EventButton type="instantaneous" />
@@ -34,6 +34,6 @@ export default class Control extends Component {
 const styles = StyleSheet.create({
 	button:{
 		width: 50,
-		margin: '2em'
+		//margin: '2em'
 	}
 });
