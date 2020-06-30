@@ -1,23 +1,24 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
 
-export default class FeedbackBar extends Component {
-	render() {
-		return (
-			<View style={styles.feedbackBox}>
-				<View style={styles.feedbackBar}>
-					<View style={styles.feedbackActivity}>
-						<Text numberOfLines={1} style={styles.feedbackText}>Select an activity</Text>
-					</View>
-					<View style={styles.feedbackEvent}>
-						<Text numberOfLines={1} style={styles.feedbackText}>Start recording events</Text>
-					</View>
-				</View> 
-			</View>
-		);
-	}
+import { useFeedbackContext } from './Context';
+
+export default function FeedbackBar() {
+	const {activity, event} = useFeedbackContext()
+
+	return (
+		<View style={styles.feedbackBox}>
+			<View style={styles.feedbackBar}>
+				<View style={styles.feedbackActivity}>
+					<Text numberOfLines={1} style={styles.feedbackText}>Select an activity</Text>
+				</View>
+				<View style={styles.feedbackEvent}>
+					<Text numberOfLines={1} style={styles.feedbackText}>{event}</Text>
+				</View>
+			</View> 
+		</View>
+	)
 }
-
 
 const styles = StyleSheet.create({
 	feedbackBox: {

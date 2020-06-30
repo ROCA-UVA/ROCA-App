@@ -1,65 +1,46 @@
-import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, AsyncStorage } from 'react-native';
 import { Button } from 'react-native-elements';
 
-export default class EventButton extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			type: '',
-			title: ''
-		}
-	}
+import { useFeedbackContext } from './Context';
 
-	componentDidMount = () => {
-		this.setState({type: this.props.type, title: this.props.title})
-	}
+export default function EventButton(props) {
+	const [type, setType] = useState(props.type)
+	const [title, setTitle] = useState(props.title)
 
-	render() {
-		if (this.state.type == "instantaneous") {
-			return <InstantaneousEvent title={this.state.title} />
-		} else if (this.state.type == "durational") {
-			return <DurationalEvent title={this.state.title} />
-		} else {
-			return <Button title="event type not found" disabled={true} buttonStyle={styles.button} />
-		}
+	if (type == "instantaneous") {
+		return <InstantaneousEvent title={title} />
+	} else if (type == "durational") {
+		return <DurationalEvent title={title} /> 
+	} else {
+		return <Button title="event type not found" disabled={true} buttonStyle={styles.button} />
 	}
 }
 
-class InstantaneousEvent extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			title: props.title || 'instantaneous'
-		}
+function InstantaneousEvent(props) {
+	const {setEvent} = useFeedbackContext()
+
+	function handlePress() {
+		setEvent('Event: ' + props.title)
 	}
 
-	render() {
-		return (
-			<Button title={this.state.title} buttonStyle={styles.button} />
-		)
-	}
+	return (
+		<Button title={props.title} buttonStyle={styles.button} onPress={handlePress} />
+	)
 }
 
-class DurationalEvent extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			active: false,
-			style: styles.buttonActive,
-			title: props.title || 'durartional'
-		}
+function DurationalEvent(props) {
+	const [title, setTitle] = useState(props.title || 'durational')
+	const [active, setActive] = useState(false)
+	const [style, setStyle] = useState(styles.buttonActive)
+
+	function handlePress() {
+		setActive(!active)
 	}
 
-	handlePress = () => {
-		this.setState({active: !this.state.active});
-	}
-
-	render() {
-		return (
-			<Button title={this.state.title} buttonStyle={[styles.button, this.state.active && this.state.style]} onPress={this.handlePress} />
-		)
-	}
+	return (
+		<Button title={title} buttonStyle={[styles.button, active && style]} onPress={handlePress} />
+	)
 }
 
 const styles = StyleSheet.create({
