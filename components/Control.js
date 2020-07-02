@@ -2,25 +2,48 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import ControlButton from './ControlButton';
 import CommentForm from './CommentForm';
-import SectionForm from './SectionForm';
-// import EventButton from './EventButton';
+import SectionButton from './SectionButton';
+import IncrementStudent from './IncrementStudent';
+import EventButton from './EventButton';
 
 export default class Control extends Component {
 	render() {
 		return (
-			<View style={{flex: 1, flexDirection: 'col', backgroundColor: 'pink'}}>
-				<View style={{flex: 3, flexDirection: 'row'}}>
+			<View style={{flex: 1, flexDirection: 'col', backgroundColor: 'white'}}>
+				<View style={{flex: 2, flexDirection: 'row'}}>
 					<ControlButton type="Start" />
 					<ControlButton type="Reset" />
 					<CommentForm/>
 				</View>
-                <View style={{flex: 5, flexDirection: 'col'}}>
-					<SectionForm/>
-					<SectionForm/>
-					<SectionForm/>
-					<SectionForm/>
-					<SectionForm/>
-				</View>
+
+                <View style={{flexDirection: 'row', flex: 2}}>
+                    <View style={{flexDirection: 'col'}, styles.section}>
+                        <SectionButton/>
+                        <IncrementStudent/>
+                    </View>
+                    <View style={{flexDirection: 'col'}, styles.section}>
+                        <SectionButton/>
+                        <IncrementStudent/>
+                    </View>
+                    <View style={{flexDirection: 'col'}, styles.section}>
+                        <SectionButton/>
+                        <IncrementStudent/>
+                    </View>
+                    <View style={{flexDirection: 'col'}, styles.section}>
+                        <SectionButton/>
+                        <IncrementStudent/>
+                    </View>
+                    <View style={{flexDirection: 'col'}, styles.section}>
+                        <SectionButton/>
+                        <IncrementStudent/>
+                    </View>
+                </View>
+
+                <View style={{flexDirection: 'row', flex: 3}}> 
+                    <EventButton type="instantaneous"/>
+                    <EventButton type="instantaneous"/>
+                    <EventButton type="instantaneous"/>
+                </View>
 
 				{/* <EventButton type="instantaneous" />
 				<EventButton type="instantaneous" />
@@ -32,5 +55,11 @@ export default class Control extends Component {
 }
 
 const styles = StyleSheet.create({
-
+    button:{
+        
+    },
+    section:{
+        flex: 2,
+        alignItems: 'center'
+    }
 });

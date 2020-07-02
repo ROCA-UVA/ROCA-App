@@ -64,7 +64,7 @@ class DurationalEvent extends Component {
 			<Button 
 				titleStyle={{
 					color: "white",
-					fontSize: 16,
+					fontSize: 13,
 				}}
 				title="durational" 
 				buttonStyle={[styles.button, this.state.active && this.state.style]} 
@@ -75,11 +75,11 @@ class DurationalEvent extends Component {
 
 const styles = StyleSheet.create({
 	button: {
-		backgroundColor: '#333232',
+		backgroundColor: '#FBC02D',
 		borderRadius: 100,
 		padding: 10,
 		overflow: 'hidden',
-		width: 140,
+		width: 120,
 		height: 40,
 		margin: 11,
 	},
