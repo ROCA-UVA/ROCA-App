@@ -57,11 +57,10 @@ const styles = StyleSheet.create({
 	button: {
 		backgroundColor: '#282828',
 		borderRadius: 100,
-		padding: 10,
+		padding: 5,
 		overflow: 'hidden',
-		height: 30,
-		width: 90,
-		fontSize: 20
+		height: 40,
+		width: 100,
 	},
 	buttonActive: {
 		backgroundColor: 'red',

@@ -6,25 +6,44 @@ import SectionForm from './SectionForm';
 import EventButton from './EventButton';
 
 export default class Control extends Component {
+	state = { 
+		sectionID: '',
+	}
+
+	callbackFunction = (childData) => {
+		this.setState({sectionID: childData})
+		console.log({sectionID: childData})
+	}
+
 	render() {
 		return (
 			<View style={{flex: 1, flexDirection: 'col', backgroundColor: 'pink'}}>
-				<View style={{flex: 3, flexDirection: 'row', backgroundColor: 'pink'}}>
-					<ControllerButtons type="Start" />
-					<ControllerButtons type="Reset" />
-					<CommentForm/>
-				</View>
-				<View style={{flex: 2, flexDirection: 'row', backgroundColor: 'pink'}}>
-					<SectionForm/>
-					<SectionForm/>
-					<SectionForm/>
-					<SectionForm/>
-					<SectionForm/>
+				<View style={{flex: 1, flexDirection: 'row',padding:10}}>
+					<View style={{width:110}}>
+						<ControllerButtons type="Start" />
+					</View>
+					<View style={{width:110}}>
+						<ControllerButtons type="Reset" />
+					</View>
+					<View style={{width:500,padding:5}} >
+						<CommentForm/>
+					</View>
 				</View>
 
-				<EventButton type="instantaneous" />
-				<EventButton type="instantaneous" />
-				<EventButton type="instantaneous" />
+				<View style={{flex: 1, flexDirection: 'row',padding:10}}>
+					<SectionForm sectionID='1' parentCallback = {this.callbackFunction}/>
+					<SectionForm sectionID='2' parentCallback = {this.callbackFunction}/>
+					<SectionForm sectionID='3' parentCallback = {this.callbackFunction}/>
+					<SectionForm sectionID='4' parentCallback = {this.callbackFunction}/>
+					<SectionForm sectionID='5' parentCallback = {this.callbackFunction}/>
+					<SectionForm sectionID='6' parentCallback = {this.callbackFunction}/>
+				</View>
+
+				<View style={{flex: 3, flexDirection: 'column',padding:10}}>
+					<EventButton type="instantaneous" />
+					<EventButton type="instantaneous" />
+					<EventButton type="instantaneous" />
+				</View>
 			</View>
 			
 		);
