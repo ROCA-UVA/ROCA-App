@@ -8,14 +8,13 @@ import Control from './Control';
 export default function LeftSide() {
 	return (
 		<View style={{flex: 5, backgroundColor: 'skyblue'}}>
-			<View style={{flex: 1, flexDirection: 'row'}}>
+			<View style={{flex: 2, flexDirection: 'row'}}>
 				<Text style={styles.title}>Classroom</Text>
 			</View>
-			<FeedbackBar />
-			<ClassroomImage />
-			<View style={{flex: 3, backgroundColor: 'pink'}}>
-			<Control/>
-			</View>
+			<View style = {{flex:1}}><FeedbackBar /></View>
+
+			<View style = {{flex:5}}><ClassroomImage /></View>
+			<View style={{flex: 3, backgroundColor: 'pink'}}><Control/></View>
 		</View>
 	);
 }

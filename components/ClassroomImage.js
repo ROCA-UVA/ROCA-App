@@ -38,6 +38,7 @@ export default class ClassroomImage extends Component {
 	}
 	render() {
 		return (
+
 			<View style={{flex: 5, backgroundColor: 'white', justifyContent: 'center',alignItems: 'center',}}>
 				{/* <Text>ClassroomImage Component</Text> */}
 				{/* <View style={styles.rectangle1}><Text>1</Text></View>
@@ -52,12 +53,12 @@ export default class ClassroomImage extends Component {
 							<Text style={styles.buttonText}>Sec 2</Text>
 				</View> */}
 
-				<Rectangle height='12%' width='40%' top='27%' left='10%' sectionID='1' color={this.state.color1}  /> 
-				<Rectangle height='12%' width='40%' top='27%' left='50%' sectionID='2' color='rgba(52, 52, 52, 0.5)'/> 
-				<Rectangle height='20%' width='49%' top='40%' left='1%'  sectionID='3' color='rgba(52, 52, 52, 0.5)'/> 
-				<Rectangle height='20%' width='49%' top='40%' left='50%' sectionID='4' color={this.state.color4} /> 
-				<Rectangle height='30%' width='49%' top='61%' left='1%'  sectionID='5' color='rgba(52, 52, 52, 0.5)'/> 
-				<Rectangle height='30%' width='49%' top='61%' left='50%' sectionID='6' color='rgba(52, 52, 52, 0.5)'/> 
+				<Rectangle height='12%' width='40%' top='27%' left='10%' sectionID='Sec 1' color={this.state.color1}  /> 
+				<Rectangle height='12%' width='40%' top='27%' left='50%' sectionID='Sec 2' color='rgba(52, 52, 52, 0.5)'/> 
+				<Rectangle height='20%' width='49%' top='40%' left='1%'  sectionID='Sec 3' color='rgba(52, 52, 52, 0.5)'/> 
+				<Rectangle height='20%' width='49%' top='40%' left='50%' sectionID='Sec 4' color={this.state.color4} /> 
+				<Rectangle height='30%' width='49%' top='61%' left='1%'  sectionID='Sec 5' color='rgba(52, 52, 52, 0.5)'/> 
+				<Rectangle height='30%' width='49%' top='61%' left='50%' sectionID='Sec 6' color='rgba(52, 52, 52, 0.5)'/> 
 
 				{/* <View style={[styles.rectangle, 
 				{width:'40%',height:'12%',top:'27%',left: '10%',
@@ -84,6 +85,7 @@ export default class ClassroomImage extends Component {
 					}
 				
 				/>
+
 
 			</View>
 		);
