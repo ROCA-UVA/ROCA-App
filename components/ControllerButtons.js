@@ -119,7 +119,7 @@ class ResetEvent extends Component {
 const styles = StyleSheet.create({
 	button: {
 		backgroundColor: 'black',
-		borderRadius: 100,
+		borderRadius: 10,
 		padding: 10,
 		overflow: 'hidden',
 		width: 100,

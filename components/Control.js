@@ -10,10 +10,6 @@ export default class Control extends Component {
 		sectionID: '',
 	}
 
-	callbackFunction = (childData) => {
-		this.setState({sectionID: childData})
-		console.log({sectionID: childData})
-	}
 
 	render() {
 		return (
@@ -31,15 +27,15 @@ export default class Control extends Component {
 				</View>
 
 				<View style={{flex: 1, flexDirection: 'row',padding:10}}>
-					<SectionForm sectionID='1' parentCallback = {this.callbackFunction}/>
-					<SectionForm sectionID='2' parentCallback = {this.callbackFunction}/>
-					<SectionForm sectionID='3' parentCallback = {this.callbackFunction}/>
-					<SectionForm sectionID='4' parentCallback = {this.callbackFunction}/>
-					<SectionForm sectionID='5' parentCallback = {this.callbackFunction}/>
-					<SectionForm sectionID='6' parentCallback = {this.callbackFunction}/>
+					<SectionForm sectionID='1' />
+					<SectionForm sectionID='2' />
+					<SectionForm sectionID='3' />
+					<SectionForm sectionID='4' />
+					<SectionForm sectionID='5' />
+					<SectionForm sectionID='6' />
 				</View>
 
-				<View style={{flex: 3, flexDirection: 'column',padding:10}}>
+				<View style={{flex: 3, flexDirection: 'row',padding:10,alignItems:'center'}}>
 					<EventButton type="instantaneous" />
 					<EventButton type="instantaneous" />
 					<EventButton type="instantaneous" />

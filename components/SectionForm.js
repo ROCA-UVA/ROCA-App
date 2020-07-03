@@ -21,11 +21,9 @@ export default class SectionForm extends Component {
 	onToggle = checked => {
 		console.log("Check " + this.state.sectionID);
 		this.setState({ checked });
-		this.sendData();}
+		}
 
-	sendData = () => {
-		this.props.parentCallback(this.state);
-	}
+
 	
 	render() {
 		const { checked } = this.state;
