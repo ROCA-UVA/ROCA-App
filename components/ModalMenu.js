@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, Text, StyleSheet, View, FlatList, AsyncStorage } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, View, SectionList, AsyncStorage } from 'react-native';
 import { Overlay, Divider } from 'react-native-elements';
 
 export default function ModalMenu(props) {
@@ -33,17 +33,20 @@ export default function ModalMenu(props) {
 			>
 				<View>
 					<Text style={styles.modalHeading}>{modalHeading}</Text>
-					<FlatList
-						data={modalItem}
-						renderItem={({item}) => (
+					<SectionList
+						sections={modalItem}
+						keyExtractor={(item, index) => item + index}
+						renderItem={({ item }) => (
 							<View>
 								<TouchableOpacity onPress={() => handleSelect(item)}>
-									<Text style={styles.modalItem}>{item.name}</Text>
+									<Text style={styles.modalSubitem}>{item.title}</Text>
 								</TouchableOpacity>
 								<Divider />
 							</View>
 						)}
-						keyExtractor={item => item.name}
+						renderSectionHeader={({ section: { title } }) => (
+							<Text style={styles.modalItem}>{title}</Text>
+						)}
 					/>
 				</View>
 			</Overlay>
@@ -60,6 +63,12 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold'
 	},
 	modalItem: {
+		textAlign: 'center',
+		fontSize: 30,
+		padding: 10,
+		backgroundColor: "lightgray"
+	},
+	modalSubitem: {
 		textAlign: 'center',
 		fontSize: 25,
 		padding: 10

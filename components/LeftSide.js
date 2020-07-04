@@ -29,9 +29,9 @@ export default function Leftside() {
 	}, [])
 
 	async function handleModalSelect(params) {
-		setClassroomName(params.name)
+		setClassroomName(params.title)
 		setClassroomURI(params.uri)
-		await AsyncStorage.setItem('classroom', JSON.stringify({name: params.name, uri: params.uri}))
+		await AsyncStorage.setItem('classroom', JSON.stringify({name: params.title, uri: params.uri}))
 	}
 
 	return (

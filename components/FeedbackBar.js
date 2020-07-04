@@ -1,16 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
 
+import ModalMenu from './ModalMenu';
 import { useFeedbackContext } from './Context';
 
 export default function FeedbackBar() {
-	const {activity, event} = useFeedbackContext()
+	const [activityList, setActivityList] = useState([])
+	const [activityName, setActivityName] = useState("")
+
+	const {activity, setActivity, event} = useFeedbackContext()
+
+	useEffect(() => {
+		async function loadData() {
+			try {
+				const protocol = await AsyncStorage.getItem('protocol')
+				const list = JSON.parse(protocol).activities.instructor
+				setActivityList(JSON.parse(protocol).activities)
+
+				if (activity == -1) {
+					setActivityName("Select an activity")
+				}
+			} catch (error) {
+				alert(error)
+			}
+		}
+
+		loadData()
+	}, [])
+
+	async function handleModalSelect(params) {
+		setActivity(params.key)
+		setActivityName(params.title)
+		AsyncStorage.setItem('activity', JSON.stringify(params.key))
+	}
 
 	return (
 		<View style={styles.feedbackBox}>
 			<View style={styles.feedbackBar}>
 				<View style={styles.feedbackActivity}>
-					<Text numberOfLines={1} style={styles.feedbackText}>Select an activity</Text>
+					<ModalMenu 
+						label={activityName} 
+						style={[styles.feedbackText, {textDecorationLine: 'underline'}]} 
+						modalHeading='Select an activity' 
+						modalItem={activityList}
+						onPress={handleModalSelect}
+					/>
 				</View>
 				<View style={styles.feedbackEvent}>
 					<Text numberOfLines={1} style={styles.feedbackText}>{event}</Text>

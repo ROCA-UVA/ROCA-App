@@ -1,18 +1,25 @@
 {
-	"activities": {
-		"instructor": [
-			{"title": "Lecturing", "code": "LEC", "key": 1},
-			{"title": "Group Discussion", "code": "G-DIS", "key": 2},
-			{"title": "Administrative Task", "code": "ADM", "key": 3},
-			{"title": "Media", "code": "MED", "key": 4},
-			{"title": "Idle", "code": "IDL", "key": 5}
-		],
-		"student": [
-			{"title": "Group Work", "code": "G-WK", "key": 6},
-			{"title": "Individual Work", "code": "I-WK", "key": 7},
-			{"title": "Presentation", "code": "PRS", "key": 8}
-		]
-	},
+	"activities": [
+		{
+			"title": "Instructor Activity",
+			"data": [
+				{"title": "Lecturing", "code": "LEC", "key": 1},
+				{"title": "Group Discussion", "code": "G-DIS", "key": 2},
+				{"title": "Administrative Task", "code": "ADM", "key": 3},
+				{"title": "Media", "code": "MED", "key": 4},
+				{"title": "Idle", "code": "IDL", "key": 5}
+			]
+		},
+		{
+			"title": "Student Activity",
+			"data": [
+				{"title": "Group Work", "code": "G-WK", "key": 6},
+				{"title": "Individual Work", "code": "I-WK", "key": 7},
+				{"title": "Presentation", "code": "PRS", "key": 8}
+			]
+		}
+	],
+
 	"a_events": {
 		"instructor": [
 			{"title": "Problems", "code": "PRB", "type": "durational", "dependencies": [1, 2, 3, 6, 7]},
