@@ -1,23 +1,59 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
 
-export default class FeedbackBar extends Component {
-	render() {
-		return (
-			<View style={styles.feedbackBox}>
-				<View style={styles.feedbackBar}>
-					<View style={styles.feedbackActivity}>
-						<Text numberOfLines={1} style={styles.feedbackText}>Select an activity</Text>
-					</View>
-					<View style={styles.feedbackEvent}>
-						<Text numberOfLines={1} style={styles.feedbackText}>Start recording events</Text>
-					</View>
-				</View> 
-			</View>
-		);
+import ModalMenu from './ModalMenu';
+import { useFeedbackContext } from './Context';
+import { getTime } from './Time';
+
+export default function FeedbackBar() {
+	const [activityList, setActivityList] = useState([])
+	const [activityName, setActivityName] = useState("")
+
+	const {activity, setActivity, event, setEvent} = useFeedbackContext()
+
+	useEffect(() => {
+		async function loadData() {
+			try {
+				const protocol = await AsyncStorage.getItem('protocol')
+				const list = JSON.parse(protocol).activities.instructor
+				setActivityList(JSON.parse(protocol).activities)
+
+				if (activity == -1) {
+					setActivityName("Select an activity")
+				}
+			} catch (error) {
+				alert(error)
+			}
+		}
+
+		loadData()
+	}, [])
+
+	async function handleModalSelect(params) {
+		setActivity(params.key)
+		setActivityName(params.title)
+		setEvent('['+getTime()+'] Activity: ' + params.title)
 	}
-}
 
+	return (
+		<View style={styles.feedbackBox}>
+			<View style={styles.feedbackBar}>
+				<View style={styles.feedbackActivity}>
+					<ModalMenu 
+						label={activityName} 
+						style={[styles.feedbackText, {textDecorationLine: 'underline'}]} 
+						modalHeading='Select an activity' 
+						modalItem={activityList}
+						onPress={handleModalSelect}
+					/>
+				</View>
+				<View style={styles.feedbackEvent}>
+					<Text numberOfLines={1} style={styles.feedbackText}>{event}</Text>
+				</View>
+			</View> 
+		</View>
+	)
+}
 
 const styles = StyleSheet.create({
 	feedbackBox: {
