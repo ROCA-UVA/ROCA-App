@@ -3,12 +3,13 @@ import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
 
 import ModalMenu from './ModalMenu';
 import { useFeedbackContext } from './Context';
+import { getTime } from './Time';
 
 export default function FeedbackBar() {
 	const [activityList, setActivityList] = useState([])
 	const [activityName, setActivityName] = useState("")
 
-	const {activity, setActivity, event} = useFeedbackContext()
+	const {activity, setActivity, event, setEvent} = useFeedbackContext()
 
 	useEffect(() => {
 		async function loadData() {
@@ -31,7 +32,7 @@ export default function FeedbackBar() {
 	async function handleModalSelect(params) {
 		setActivity(params.key)
 		setActivityName(params.title)
-		AsyncStorage.setItem('activity', JSON.stringify(params.key))
+		setEvent('['+getTime()+'] Activity: ' + params.title)
 	}
 
 	return (

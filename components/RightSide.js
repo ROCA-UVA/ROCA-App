@@ -1,63 +1,51 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View, ScrollView, AsyncStorage } from 'react-native';
 
 import EventButton from './EventButton';
+import { useFeedbackContext } from './Context';
 
-export default class RightSide extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			activity: '',
-			events: {
-				instructor: [],
-				technology: [],
-				student: []
+export default function RightSide() {
+	const [events, setEvents] = useState({})
+
+	const {activity} = useFeedbackContext()
+
+	useEffect(() => {
+		async function loadData() {
+			try {
+				const protocol = await AsyncStorage.getItem('protocol')
+				setEvents(JSON.parse(protocol).a_events)
+			} catch (error) {
+				alert(error)
 			}
-		};
-	}
-
-	componentDidMount = () => {
-		this.loadData()
-	}
-
-	loadData = async () => {
-		try {
-			let activity_code = await AsyncStorage.getItem('activity')
-			this.setState({activity: JSON.parse(activity_code)})
-
-			const protocol = await AsyncStorage.getItem('protocol')
-			this.setState({events: JSON.parse(protocol).a_events})
-		} catch (error) {
-			alert(error)
 		}
-	}
 
-	getEventData = (type, event) => {
-		if (event.dependencies.includes(this.state.activity)) {
+		loadData()
+	}, [])
+
+	function getEventData(type, event) {
+		if (event.dependencies.includes(activity)) {
 			return <EventButton type={event.type} title={event.title} key={event.code} />
 		}
 	}
 
-	getEventTypes = () => {
-		return Object.keys(this.state.events).map((type) => {
+	function getEventTypes() {
+		return Object.keys(events).map((type) => {
 			return [
 				<Text key={type}>{type}</Text>,
-				this.state.events[type].map((event) => {
-					return this.getEventData(type, event)
+				events[type].map((event) => {
+					return getEventData(type, event)
 				})
 			]
 		})
 	}
 
-	render() {
-		return (
-			<View style={{flex: 2, backgroundColor: 'lightblue'}}>
-	 			<View style={{flex: 1}}>
-	 				<ScrollView>
-	 					{this.getEventTypes()}
-	 				</ScrollView>
-	 			</View>
-	 		</View>
-		)
-	}
+	return (
+		<View style={{flex: 2, backgroundColor: 'lightblue'}}>
+ 			<View style={{flex: 1}}>
+ 				<ScrollView>
+ 					{getEventTypes()}
+ 				</ScrollView>
+ 			</View>
+ 		</View>
+	)
 }
