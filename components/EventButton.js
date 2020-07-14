@@ -14,7 +14,11 @@ export default function EventButton(props) {
 	} else if (type == "durational") {
 		return <DurationalEvent title={title} /> 
 	} else {
-		return <Button title="event type not found" disabled={true} buttonStyle={styles.button} />
+		return <Button titleStyle={{
+			color: "white",
+			fontSize: 16,
+			fontSize: 13,
+		}}title="event type not found" disabled={true} buttonStyle={styles.button} />
 	}
 }
 
@@ -26,7 +30,11 @@ function InstantaneousEvent(props) {
 	}
 
 	return (
-		<Button title={props.title} buttonStyle={styles.button} onPress={handlePress} />
+		<Button titleStyle={{
+			color: "white",
+			fontSize: 16,
+			fontSize: 13,
+		}} title={props.title} buttonStyle={styles.button} onPress={handlePress} />
 	)
 }
 
@@ -47,17 +55,26 @@ function DurationalEvent(props) {
 	}
 
 	return (
-		<Button title={title} buttonStyle={[styles.button, active && style]} onPress={handlePress} />
+		<Button titleStyle={{
+			color: "white",
+			fontSize: 16,
+			fontSize: 13,
+		}} 
+			title={title} buttonStyle={[styles.button, active && style]} onPress={handlePress} />
 	)
 }
 
 const styles = StyleSheet.create({
 	button: {
-		backgroundColor: 'black',
+		backgroundColor: '#333232',
+		backgroundColor: '#FBC02D',
 		borderRadius: 100,
 		padding: 10,
 		overflow: 'hidden',
-		margin: 5
+		width: 140,
+		width: 120,
+		height: 40,
+		margin: 11,
 	},
 	buttonActive: {
 		backgroundColor: 'red',
