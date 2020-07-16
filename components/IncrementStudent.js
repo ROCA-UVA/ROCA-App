@@ -13,15 +13,15 @@ export default class IncrementStudent extends Component{
                 <NumericInput 
                     value={this.state.value} 
                     onChange={value => this.setState({value})} 
-                    totalWidth={70} 
-                    totalHeight={32} 
+                    totalWidth={100} 
+                    totalHeight={40} 
                     iconSize={20}
                     step={1}
                     minValue={0}
                     valueType='real'
                     rounded 
                     textColor='black' 
-                    iconStyle={{ color: 'black' }} 
+                    iconStyle={{ color: 'black', bold:'trie'}} 
                     rightButtonBackgroundColor='white' 
                     leftButtonBackgroundColor='white'/>
 			</View>

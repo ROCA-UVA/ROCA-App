@@ -27,6 +27,20 @@ import CheckBox from 'react-native-check-box';
 
 export default class SectionButton extends Component {
 	state = { checked: false };
+
+	
+	constructor(props) {
+		super(props);
+		this.state = {
+			sectionID: ''
+		}
+	}
+
+	
+	componentDidMount = () => {
+		this.setState({sectionID: this.props.sectionID})
+	}
+
 	onToggle = checked => this.setState({ checked });
 
 	render() {
@@ -40,23 +54,34 @@ export default class SectionButton extends Component {
 		/>
 		const { checked } = this.state;
 		return (
-			<View style={{flexDirection: 'row'}}>
+			<View style={{flexDirection: 'row',alignItems:'center'}}>
 				<CheckBox
-					style={{ flex: 1, paddingLeft: 45}}
+					style = {styles.checkbox}
 					onClick={()=>{
 					this.setState({
 						isChecked:!this.state.isChecked
 					})
 					}}
 					isChecked={this.state.isChecked}
-					rightText={'S1'}
+					// rightText={"Sec " + this.state.sectionID}
 					checkBoxColor={'gray'}
+					
+					
 				/>
+				<Text> {"Sec " + this.state.sectionID}</Text>
 			</View>
+			
 		);
 	}
 }
 
 const styles = StyleSheet.create({
-
+	checkbox: {
+		alignSelf: "center",
+		transform: [
+			{scaleX: 2},
+			{scaleY: 2}
+		  ],
+		padding:10
+	  },
 });

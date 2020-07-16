@@ -27,19 +27,31 @@ export default class ControlButton extends Component {
 }
 
 class StartEvent extends Component {
+
 	constructor(props) {
 		super(props);
 		this.state = {
 			active: false,
-      style: styles.buttonActive,
-      status :"Start"
-		}
+      		style: styles.startActive,
+			status :"Start",
+			showText: true ,
+		};
+		setInterval(() => {
+			if (this.state.status == "Start"){ 
+				this.setState(previousState => {
+				return { showText: !previousState.showText };
+				});
+			}
+		  },
+		  1000 // define blinking time in miliseconds
+		);
 	}
 
 	handlePress = () => {
     if (this.state.status == "Start"){ //after pressing start
-      this.setState({active: true});
-      this.setState({status: "Stop"});
+	  this.setState({active: true,
+					status:"Stop",
+					showText:false});
     }
     else if (this.state.status == "Stop"){ // After pressing stop
       Alert.alert(
@@ -69,9 +81,10 @@ class StartEvent extends Component {
 	}
 
 	render() {
-
+		let stateColor = this.state.showText ? '#22AD1E' : 'transparent';
 		return (
-			<Button title={this.state.status} buttonStyle={[styles.button, this.state.active && this.state.style]} onPress={this.handlePress} />
+			<Button title={this.state.status} style={ {backgroundColor: stateColor}}  
+											buttonStyle={[styles.button, this.state.active && this.state.style]} onPress={this.handlePress} />
 		)
 	}
 }
@@ -107,15 +120,12 @@ const styles = StyleSheet.create({
 		borderRadius: 100,
 		padding: 10,
 		overflow: 'hidden',
-        width: 100,
-        margin: 11,
-        borderWidth: 1,
-        borderColor: 'white',
+    width: 100,
+    margin: 11,
+    borderWidth: 1,
+    borderColor: 'white',
         
 	},
-	buttonActive: {
-		backgroundColor: 'red',
-  },
   startActive: {
 		backgroundColor: 'red',
 	}

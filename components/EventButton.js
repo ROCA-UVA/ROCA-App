@@ -66,13 +66,11 @@ function DurationalEvent(props) {
 
 const styles = StyleSheet.create({
 	button: {
-		backgroundColor: '#333232',
 		backgroundColor: '#FBC02D',
 		borderRadius: 100,
 		padding: 10,
 		overflow: 'hidden',
 		width: 140,
-		width: 120,
 		height: 40,
 		margin: 11,
 	},
