@@ -21,7 +21,7 @@ export default class IncrementStudent extends Component{
                     valueType='real'
                     rounded 
                     textColor='black' 
-                    iconStyle={{ color: 'black', bold:'trie'}} 
+                    iconStyle={{ color: 'black'}} 
                     rightButtonBackgroundColor='white' 
                     leftButtonBackgroundColor='white'/>
 			</View>
