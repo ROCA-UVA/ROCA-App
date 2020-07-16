@@ -3,7 +3,7 @@ export function getDate() {
 	var mo = new Date().getMonth() + 1
 	var dt = new Date().getDate()
 
-	return mo + "/" + dt + "/" + yr
+	return mo + "_" + dt + "_" + yr
 }
 
 export function getTime() {

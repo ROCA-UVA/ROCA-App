@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
 import { Button } from 'react-native-elements';
 
+import * as FileSystem from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
+
 import FeedbackBar from './FeedbackBar';
 import ModalMenu from './ModalMenu';
 import ClassroomImage from './ClassroomImage';
 import ClassroomData from  './ClassroomData';
 import { useFeedbackContext } from './Context';
+import { getDate } from './Time';
 
 export default function Leftside() {
 	const [classroomName, setClassroomName] = useState("")
@@ -39,7 +43,10 @@ export default function Leftside() {
 	}
 
 	async function handleDownload() {
-		console.log(log)
+		const filePath = FileSystem.documentDirectory + "roca_observation_" + getDate() + ".txt"
+		await FileSystem.writeAsStringAsync(filePath, log)
+
+		await Sharing.shareAsync(filePath)
 	}
 
 	return (
