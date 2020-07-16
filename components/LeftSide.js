@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
+import { Button } from 'react-native-elements';
 
 import FeedbackBar from './FeedbackBar';
 import ModalMenu from './ModalMenu';
 import ClassroomImage from './ClassroomImage';
 import ClassroomData from  './ClassroomData';
+import { useFeedbackContext } from './Context';
 
 export default function Leftside() {
 	const [classroomName, setClassroomName] = useState("")
 	const [classroomURI, setClassroomURI] = useState()
 	const [classroomList, setClassroomList] = useState([])
 
+	const {log} = useFeedbackContext()
+	
 	useEffect(() => {
 		async function loadData() {
 			try {
@@ -34,6 +38,10 @@ export default function Leftside() {
 		await AsyncStorage.setItem('classroom', JSON.stringify({name: params.title, uri: params.uri}))
 	}
 
+	async function handleDownload() {
+		console.log(log)
+	}
+
 	return (
 		<View style={{flex: 5, backgroundColor: 'skyblue'}}>
 			<View style={{flex: 2, flexDirection: 'row'}}>
@@ -49,6 +57,7 @@ export default function Leftside() {
 			<FeedbackBar />
 			<ClassroomImage uri={classroomURI} />
 			<View style={{flex: 6, backgroundColor: 'pink'}}>
+				<Button title="Download log!" onPress={handleDownload} />
 			</View>
 		</View>
 	)
