@@ -10,11 +10,6 @@ export default class Control extends Component {
 	render() {
 		return (
 			<View style={{flex: 1, flexDirection: 'col', backgroundColor: 'white',justifyContent: 'space-around',alignItems:'center'}}>
-				<View style={{ flexDirection: 'row',flex:1}}>
-					<ControlButton type="Start" />
-					<ControlButton type="Reset" />
-					<CommentForm/>
-				</View>
                 <View style={{flexDirection: 'row',flex:3}}>
 
                     <View style={{flexDirection: 'col',flex:2}}>
@@ -47,6 +42,12 @@ export default class Control extends Component {
                         <SectionEventButton title="Responds to Student" />
                     </View>
                 </View>
+
+                <View style={{ flexDirection: 'row',flex:1}}>
+					<ControlButton type="Start" />
+					<ControlButton type="Reset" />
+					<CommentForm/>
+				</View>
             </View>
 			
 		);
