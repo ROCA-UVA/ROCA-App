@@ -5,7 +5,7 @@ import FeedbackBar from './FeedbackBar';
 import ModalMenu from './ModalMenu';
 import ClassroomImage from './ClassroomImage';
 import ClassroomData from  './ClassroomData';
-import Control from './Control';
+import BottomMenu from './BottomMenu';
 
 export default function Leftside() {
 	const [classroomName, setClassroomName] = useState("")
@@ -50,7 +50,7 @@ export default function Leftside() {
 			<FeedbackBar />
 			<ClassroomImage uri={classroomURI} />
 			<View style={{flex: 6, backgroundColor: 'pink'}}>
-				<Control/>
+				<BottomMenu />
 			</View>
 		</View>
 	)
