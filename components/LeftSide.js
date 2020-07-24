@@ -4,13 +4,12 @@ import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
 import FeedbackBar from './FeedbackBar';
 import ModalMenu from './ModalMenu';
 import ClassroomImage from './ClassroomImage';
-import ClassroomData from  './ClassroomData';
+import ClassroomDatabase from  './ClassroomDatabase';
 import BottomMenu from './BottomMenu';
 
 export default function Leftside() {
-	const [classroomName, setClassroomName] = useState("")
-	const [classroomURI, setClassroomURI] = useState()
 	const [classroomList, setClassroomList] = useState([])
+	const [classroomData, setClassroomData] = useState({})
 
 	useEffect(() => {
 		async function loadData() {
@@ -18,9 +17,8 @@ export default function Leftside() {
 				const raw = await AsyncStorage.getItem('classroom')
 				const parsed = JSON.parse(raw)
 
-				setClassroomName(parsed.name)
-				setClassroomURI(parsed.uri)
-				setClassroomList(ClassroomData)
+				setClassroomData(parsed)
+				setClassroomList(ClassroomDatabase)
 			} catch (error) {
 				alert(error)
 			}
@@ -30,9 +28,8 @@ export default function Leftside() {
 	}, [])
 
 	async function handleModalSelect(params) {
-		setClassroomName(params.title)
-		setClassroomURI(params.uri)
-		await AsyncStorage.setItem('classroom', JSON.stringify({name: params.title, uri: params.uri}))
+		setClassroomData(params)
+		await AsyncStorage.setItem('classroom', JSON.stringify(params))
 	}
 
 	return (
@@ -40,7 +37,7 @@ export default function Leftside() {
 			<View style={{flex: 2, flexDirection: 'row'}}>
 				<Text style={styles.title}>Classroom:</Text>
 				<ModalMenu 
-					label={classroomName} 
+					label={classroomData.title} 
 					style={[styles.title, {textDecorationLine: 'underline'}]} 
 					modalHeading='Select a classroom' 
 					modalItem={classroomList}
@@ -48,7 +45,7 @@ export default function Leftside() {
 				/>
 			</View>
 			<FeedbackBar />
-			<ClassroomImage uri={classroomURI} />
+			<ClassroomImage data={classroomData} />
 			<View style={{flex: 6, backgroundColor: 'pink'}}>
 				<BottomMenu />
 			</View>
