@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
 
 import ModalMenu from './ModalMenu';
-import { useFeedbackContext } from './Context';
+import { useAppContext } from './Context';
 import { getTime } from './Time';
 
 export default function FeedbackBar() {
 	const [activityList, setActivityList] = useState([])
 	const [activityName, setActivityName] = useState("")
 
-	const {activity, setActivity, event, setEvent} = useFeedbackContext()
+	const {activity, setActivity, event, setEvent} = useAppContext()
 
 	useEffect(() => {
 		async function loadData() {

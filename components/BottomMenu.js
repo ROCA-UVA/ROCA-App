@@ -3,22 +3,19 @@ import { Text, View, ScrollView, TextInput, AsyncStorage } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
 import EventButton from './EventButton';
-import { useFeedbackContext } from './Context';
+import { useAppContext } from './Context';
 
 export default function BottomMenu() {
 	const [events, setEvents] = useState({})
 	const [comment, onChangeComment] = useState("Enter comments")
-	const [sections, setSections] = useState([])
 
-	const {activity} = useFeedbackContext()
+	const {activity, sections, setSections} = useAppContext()
 
 	useEffect(() => {
 		async function loadData() {
 			try {
 				const protocol = await AsyncStorage.getItem('protocol')
 				setEvents(JSON.parse(protocol).z_events)
-
-				setSections(JSON.parse(await AsyncStorage.getItem('sections')))
 			} catch {
 				alert(error)
 			}

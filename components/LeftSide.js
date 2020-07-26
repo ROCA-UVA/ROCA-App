@@ -6,19 +6,20 @@ import ModalMenu from './ModalMenu';
 import ClassroomImage from './ClassroomImage';
 import ClassroomDatabase from  './ClassroomDatabase';
 import BottomMenu from './BottomMenu';
+import { useAppContext } from './Context';
 
 export default function Leftside() {
 	const [classroomList, setClassroomList] = useState([])
 	const [classroomData, setClassroomData] = useState({})
 
+	const {sections, setSections} = useAppContext()
+
 	useEffect(() => {
 		async function loadData() {
 			try {
-				const raw = await AsyncStorage.getItem('classroom')
-				const parsed = JSON.parse(raw)
-
-				setClassroomData(parsed)
 				setClassroomList(ClassroomDatabase)
+				setClassroomData(JSON.parse(await AsyncStorage.getItem('classroom')))
+				setSections(JSON.parse(await AsyncStorage.getItem('sections')))
 			} catch (error) {
 				alert(error)
 			}

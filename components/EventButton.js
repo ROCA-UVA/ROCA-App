@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, AsyncStorage } from 'react-native';
 import { Button } from 'react-native-elements';
 
-import { useFeedbackContext } from './Context';
+import { useAppContext } from './Context';
 import { getTime } from './Time';
 
 export default function EventButton(props) {
@@ -23,7 +23,7 @@ export default function EventButton(props) {
 }
 
 function InstantaneousEvent(props) {
-	const {setEvent} = useFeedbackContext()
+	const {setEvent} = useAppContext()
 
 	function handlePress() {
 		setEvent('['+getTime()+'] Event: ' + props.title)
@@ -42,7 +42,7 @@ function DurationalEvent(props) {
 	const [title, setTitle] = useState(props.title || 'durational')
 	const [active, setActive] = useState(false)
 	const [style, setStyle] = useState(styles.buttonActive)
-	const {setEvent} = useFeedbackContext()
+	const {setEvent} = useAppContext()
 
 	function handlePress() {
 		setActive(!active)
