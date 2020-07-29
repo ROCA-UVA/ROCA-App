@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
+import { View, Text, TextInput, StyleSheet, AsyncStorage } from 'react-native';
 
 import FeedbackBar from './FeedbackBar';
 import ModalMenu from './ModalMenu';
 import ClassroomImage from './ClassroomImage';
 import ClassroomDatabase from  './ClassroomDatabase';
-import BottomMenu from './BottomMenu';
+import SectionMenu from './SectionMenu';
+import EventButton from './EventButton';
 import { useAppContext } from './Context';
 
 export default function Leftside() {
 	const [classroomList, setClassroomList] = useState([])
 	const [classroomData, setClassroomData] = useState({})
+	const [loadMenu, setLoadMenu] = useState(false)
+	const [comment, onChangeComment] = useState("Enter comments")
 
 	const {sections, setSections} = useAppContext()
 
@@ -30,6 +33,7 @@ export default function Leftside() {
 
 	async function handleModalSelect(params) {
 		setClassroomData(params)
+		setLoadMenu(true)
 		await AsyncStorage.setItem('classroom', JSON.stringify(params))
 	}
 
@@ -47,9 +51,18 @@ export default function Leftside() {
 			</View>
 			<FeedbackBar />
 			<ClassroomImage data={classroomData} />
-			<View style={{flex: 6, backgroundColor: 'pink'}}>
-				<BottomMenu />
+			<View style={{flex: 5}}>
+				{loadMenu && <SectionMenu />}
 			</View>
+			<View style={{flex: 2, flexDirection: 'row', padding: 10, backgroundColor: 'steelblue'}}>
+        <EventButton type="instantaneous" title="Start" />
+        <EventButton type="instantaneous" title="Reset" />
+        <TextInput
+          style={{flex: 1, borderColor: 'white', borderWidth: 1, height: 40, borderRadius: 100, padding: 10, margin: 10, color: 'white'}}
+          onChangeText={text => onChangeComment(text)}
+          value={comment}
+        />
+      </View>
 		</View>
 	)
 }

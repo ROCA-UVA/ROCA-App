@@ -9,11 +9,11 @@ import { AppProvider } from './components/Context';
 
 export default function App() {
   return (
-  	<AppProvider value={{activity: -1, event: "Start recording events!!"}}>
-	  <View style={{flex: 1, flexDirection: 'row'}}>
-	    <LeftSide />
-	    <RightSide />
-	  </View>
-	</AppProvider>
+    <AppProvider value={{activity: -1, event: "Start recording events!!"}}>
+      <View style={{flex: 1, flexDirection: 'row'}}>
+        <LeftSide />
+        <RightSide />
+      </View>
+    </AppProvider>
   );
 }

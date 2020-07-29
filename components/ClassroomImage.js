@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, Text, Image, TouchableHighlight, StyleSheet } from 'react-native';
 
 import { useAppContext } from './Context';
@@ -47,7 +47,7 @@ export default function ClassroomImage(props) {
 
 const styles = StyleSheet.create({
 	imageContainer: {
-		flex: 9,
+		flex: 10,
 		backgroundColor: 'white',
 		justifyContent: 'center',
 	},
