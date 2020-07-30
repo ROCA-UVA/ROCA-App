@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, AsyncStorage } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, AsyncStorage } from 'react-native';
+import { Button, Overlay } from 'react-native-elements';
 
 import FeedbackBar from './FeedbackBar';
 import ModalMenu from './ModalMenu';
@@ -13,7 +14,9 @@ export default function Leftside() {
 	const [classroomList, setClassroomList] = useState([])
 	const [classroomData, setClassroomData] = useState({})
 	const [loadMenu, setLoadMenu] = useState(false)
+	const [status, setStatus] = useState(false)
 	const [comment, onChangeComment] = useState("Enter comments")
+	const [showComment, setShowComment] = useState(false)
 
 	const {sections, setSections} = useAppContext()
 
@@ -55,13 +58,40 @@ export default function Leftside() {
 				{loadMenu && <SectionMenu />}
 			</View>
 			<View style={{flex: 2, flexDirection: 'row', padding: 10, backgroundColor: 'steelblue'}}>
-        <EventButton type="instantaneous" title="Start" />
-        <EventButton type="instantaneous" title="Reset" />
-        <TextInput
-          style={{flex: 1, borderColor: 'white', borderWidth: 1, height: 40, borderRadius: 100, padding: 10, margin: 10, color: 'white'}}
-          onChangeText={text => onChangeComment(text)}
-          value={comment}
-        />
+				{status
+					? <EventButton type="confirm" title="Stop" feedback="Observation stopped" onPress={() => setStatus(false)} style={{backgroundColor: 'red'}} />
+					: <EventButton type="custom" title="Start" feedback="Observation started" onPress={() => setStatus(true)} />
+				}
+				<EventButton type="confirm" title="Reset" feedback="Event reset" />
+        <TouchableOpacity 
+        	onPress={() => setShowComment(true)}
+        	style={styles.commentButton}
+        >
+        	<Text style={styles.commentButtonText}>Add comment</Text>
+        </TouchableOpacity>
+        <Overlay
+        	isVisible={showComment} 
+        	onBackdropPress={() => setShowComment(false)} 
+        	overlayStyle={{width: 500, height: 300, position: 'absolute', top: '20%'}}
+        >
+        	<View>
+        		<TextInput
+		          style={{borderColor: '#FBC02D', borderWidth: 1, width: '100%', height: '80%', padding: 10, borderRadius: 3}}
+		          onChangeText={text => onChangeComment(text)}
+		          value={comment}
+		          enablesReturnKeyAutomatically={true}
+		          multiline={true}
+		          selectTextOnFocus
+		        />
+		        <EventButton
+		        	type="custom"
+		        	title="Submit"
+		        	feedback={"Comment: " + comment}
+		        	onPress={() => setShowComment(false)}
+		        	style={{width: 'auto'}} 
+		        />
+        	</View>
+      	</Overlay>
       </View>
 		</View>
 	)
@@ -73,5 +103,21 @@ const styles = StyleSheet.create({
 		fontSize: 50,
 		paddingLeft: 20,
 		paddingTop: 20,
+	},
+	commentButton: {
+		backgroundColor: '#FBC02D',
+		borderColor: '#FBC02D',
+		borderWidth: 1,
+		borderRadius: 100,
+		justifyContent: 'center',
+		overflow: 'hidden',
+		width: '60%',
+		height: 40,
+		margin: 11,
+	},
+	commentButtonText: {
+		textAlign: 'center',
+		color: "white",
+		fontSize: 16,
 	}
 });
