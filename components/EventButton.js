@@ -20,14 +20,14 @@ export default function EventButton(props) {
 }
 
 function InstantaneousEvent(props) {
-	const {setEvent} = useAppContext()
+	const {status, setEvent} = useAppContext()
 
 	function handlePress() {
 		setEvent('['+getTime()+'] Event: ' + props.title)
 	}
 
 	return (
-		<Button titleStyle={styles.buttonTitle} title={props.title} buttonStyle={styles.button} onPress={handlePress} />
+		<Button titleStyle={styles.buttonTitle} title={props.title} disabled={!status} buttonStyle={styles.button} onPress={handlePress} />
 	)
 }
 
@@ -35,7 +35,7 @@ function DurationalEvent(props) {
 	const [title, setTitle] = useState(props.title || 'durational')
 	const [active, setActive] = useState(false)
 	const [style, setStyle] = useState(styles.buttonActive)
-	const {setEvent} = useAppContext()
+	const {status, setEvent} = useAppContext()
 
 	function handlePress() {
 		setActive(!active)
@@ -48,7 +48,7 @@ function DurationalEvent(props) {
 	}
 
 	return (
-		<Button titleStyle={styles.buttonTitle} title={title} buttonStyle={[styles.button, active && style]} onPress={handlePress} />
+		<Button titleStyle={styles.buttonTitle} title={title} disabled={!status} buttonStyle={[styles.button, active && style]} onPress={handlePress} />
 	)
 }
 

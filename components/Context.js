@@ -4,6 +4,7 @@ export const AppContext = createContext()
 export const useAppContext = () => useContext(AppContext)
 
 export function AppProvider(props) {
+	const [status, setStatus] = useState(false)
 	const [activity, setActivity] = useState(props.value.activity)
 	const [event, setEvent] = useState(props.value.event)
 	const [sections, setSections] = useState([])
@@ -11,6 +12,8 @@ export function AppProvider(props) {
 	return (
 		<AppContext.Provider 
 			value={{
+				status,
+				setStatus,
 				activity,
 				setActivity,
 				event,

@@ -14,11 +14,10 @@ export default function Leftside() {
 	const [classroomList, setClassroomList] = useState([])
 	const [classroomData, setClassroomData] = useState({})
 	const [loadMenu, setLoadMenu] = useState(false)
-	const [status, setStatus] = useState(false)
 	const [comment, onChangeComment] = useState("Enter comments")
 	const [showComment, setShowComment] = useState(false)
 
-	const {sections, setSections} = useAppContext()
+	const {status, setStatus, sections, setSections} = useAppContext()
 
 	useEffect(() => {
 		async function loadData() {
