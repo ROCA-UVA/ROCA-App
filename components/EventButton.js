@@ -7,7 +7,7 @@ import { getTime } from './Time';
 
 export default function EventButton(props) {
 	if (props.type == "instantaneous") {
-		return <InstantaneousEvent title={props.title} />
+		return <InstantaneousEvent title={props.title} feedback={props.feedback} />
 	} else if (props.type == "durational") {
 		return <DurationalEvent title={props.title} /> 
 	} else if (props.type == "confirm") {
@@ -23,7 +23,7 @@ function InstantaneousEvent(props) {
 	const {status, setEvent} = useAppContext()
 
 	function handlePress() {
-		setEvent('['+getTime()+'] Event: ' + props.title)
+		setEvent('['+getTime()+'] Event: ' + props.title + props.feedback)
 	}
 
 	return (
@@ -41,9 +41,9 @@ function DurationalEvent(props) {
 		setActive(!active)
 
 		if (!active) {
-			setEvent('['+getTime()+'] Start of event: '+props.title)
+			setEvent('['+getTime()+'] Start of event: ' + props.title)
 		} else {
-			setEvent('['+getTime()+'] End of event: '+props.title)
+			setEvent('['+getTime()+'] End of event: ' + props.title)
 		}
 	}
 

@@ -4,12 +4,14 @@ import { Card, Button, Icon, CheckBox } from 'react-native-elements';
 
 import EventButton from './EventButton';
 import { useAppContext } from './Context';
+import { getTime } from './Time';
+
 
 export default function SectionMenu() {
   const [events, setEvents] = useState({})
   const [comment, onChangeComment] = useState("Enter comments")
 
-  const {activity, sections, setSections} = useAppContext()
+  const {activity, sections, setSections, setEvent} = useAppContext()
 
   useEffect(() => {
     async function loadData() {
@@ -29,10 +31,13 @@ export default function SectionMenu() {
   }, [])
 
   function handleCount(value, index) {
-    if (sections[index].count + value >= 0) {
+    const newCount = sections[index].count + value
+
+    if (newCount >= 0) {
       let newSections = [...sections]
-      newSections[index].count += value
+      newSections[index].count = newCount
       setSections(newSections)
+      setEvent('['+getTime()+'] Event: '+newCount+' student(s) [section '+(index+1)+']')
     }
   }
 
@@ -65,9 +70,25 @@ export default function SectionMenu() {
     })
   }
 
+  function getSelected() {
+    let selected = []
+
+    sections.map((section, index) => {
+      if (section.checked) {
+        selected.push(index+1)
+      }
+    })
+
+    if (selected.length <= 0) {
+      return null
+    }
+
+    return selected
+  }
+
   function getEventData(type, event) {
     if (event.dependencies.includes(activity)) {
-      return <EventButton type={event.type} title={event.title} key={event.code} />
+      return <EventButton type={event.type} title={event.title} feedback={' [section(s) '+getSelected()+']'} key={event.code} />
     }
   }
 
