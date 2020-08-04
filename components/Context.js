@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState} from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 export const AppContext = createContext()
 export const useAppContext = () => useContext(AppContext)
@@ -6,8 +6,13 @@ export const useAppContext = () => useContext(AppContext)
 export function AppProvider(props) {
 	const [status, setStatus] = useState(false)
 	const [activity, setActivity] = useState(props.value.activity)
-	const [event, setEvent] = useState(props.value.event)
+	const [event, setEvent] = useState("Start recording events!")
 	const [sections, setSections] = useState([])
+	const [log, setLog] = useState("")
+
+	useEffect(() => {
+		setLog(log + "\n" + event)
+	}, [event])
 
 	return (
 		<AppContext.Provider 
@@ -19,7 +24,9 @@ export function AppProvider(props) {
 				event,
 				setEvent,
 				sections,
-				setSections
+				setSections,
+				log,
+				setLog
 			}}
 		>
 			{props.children}

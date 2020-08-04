@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, AsyncStorage } from 'react-native';
-import { Button, Overlay } from 'react-native-elements';
+import { Overlay } from 'react-native-elements';
+import * as FileSystem from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
 
 import FeedbackBar from './FeedbackBar';
 import ModalMenu from './ModalMenu';
@@ -9,6 +11,7 @@ import ClassroomDatabase from  './ClassroomDatabase';
 import SectionMenu from './SectionMenu';
 import EventButton from './EventButton';
 import { useAppContext } from './Context';
+import { getDate, getTime } from './Time';
 
 export default function Leftside() {
 	const [classroomList, setClassroomList] = useState([])
@@ -17,7 +20,7 @@ export default function Leftside() {
 	const [comment, onChangeComment] = useState("Enter comments")
 	const [showComment, setShowComment] = useState(false)
 
-	const {status, setStatus, sections, setSections} = useAppContext()
+	const {status, setStatus, setEvent, sections, setSections, log} = useAppContext()
 
 	useEffect(() => {
 		async function loadData() {
@@ -36,7 +39,23 @@ export default function Leftside() {
 	async function handleModalSelect(params) {
 		setClassroomData(params)
 		setLoadMenu(true)
+		setEvent('['+getTime()+'] Classroom: ' + params.title)
 		await AsyncStorage.setItem('classroom', JSON.stringify(params))
+	}
+
+	async function handleDownload() {
+		const filePath = FileSystem.documentDirectory + "roca_observation_" + getDate() + ".txt"
+		await FileSystem.writeAsStringAsync(filePath, log)
+
+		await Sharing.shareAsync(filePath)
+	}
+
+	function handleStatusButton(newStatus) {
+		setStatus(newStatus)
+
+		if (!newStatus) {
+			handleDownload()
+		}
 	}
 
 	return (
@@ -58,8 +77,8 @@ export default function Leftside() {
 			</View>
 			<View style={{flex: 2, flexDirection: 'row', padding: 10, backgroundColor: 'steelblue'}}>
 				{status
-					? <EventButton type="confirm" title="Stop" feedback="Observation stopped" onPress={() => setStatus(false)} style={{backgroundColor: 'red'}} />
-					: <EventButton type="custom" title="Start" feedback="Observation started" onPress={() => setStatus(true)} />
+					? <EventButton type="confirm" title="Stop" feedback="Observation stopped" onPress={() => handleStatusButton(false)} style={{backgroundColor: 'red'}} />
+					: <EventButton type="custom" title="Start" feedback="Observation started" onPress={() => handleStatusButton(true)} />
 				}
 				<EventButton type="confirm" title="Reset" feedback="Event reset" />
         <TouchableOpacity 

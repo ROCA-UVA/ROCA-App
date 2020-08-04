@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "expo": "^38.0.0",
+    "expo-file-system": "^9.1.0",
+    "expo-sharing": "^8.3.0",
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",

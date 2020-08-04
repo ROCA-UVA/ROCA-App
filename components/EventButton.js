@@ -7,7 +7,7 @@ import { getTime } from './Time';
 
 export default function EventButton(props) {
 	if (props.type == "instantaneous") {
-		return <InstantaneousEvent title={props.title} feedback={props.feedback} />
+		return <InstantaneousEvent title={props.title} feedback={props.feedback || ""} />
 	} else if (props.type == "durational") {
 		return <DurationalEvent title={props.title} /> 
 	} else if (props.type == "confirm") {
