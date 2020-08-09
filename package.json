@@ -8,13 +8,16 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "expo": "^38.0.0",
     "expo-file-system": "^9.1.0",
     "expo-sharing": "^8.3.0",
+    "native-base": "^2.13.13",
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
     "react-native-elements": "^2.0.2",
+    "react-native-vector-icons": "7.0.0",
     "react-native-web": "~0.11.7"
   },
   "devDependencies": {

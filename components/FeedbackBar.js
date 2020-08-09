@@ -58,7 +58,7 @@ export default function FeedbackBar() {
 const styles = StyleSheet.create({
 	feedbackBox: {
 		flex: 1,
-		backgroundColor: 'steelblue',
+		backgroundColor: '#f2f2f2',
 		padding: 10,
 	},
 	feedbackBar: {

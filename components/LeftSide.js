@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, AsyncStorage } fro
 import { Overlay } from 'react-native-elements';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import FeedbackBar from './FeedbackBar';
 import ModalMenu from './ModalMenu';
@@ -71,7 +72,7 @@ export default function Leftside() {
 	}
 
 	return (
-		<View style={{flex: 6, backgroundColor: 'skyblue'}}>
+		<View style={{flex: 6, backgroundColor: '#f2f2f2'}}>
 			<View style={{flex: 2, flexDirection: 'row'}}>
 				<Text style={styles.title}>Classroom:</Text>
 				<ModalMenu 
@@ -87,26 +88,32 @@ export default function Leftside() {
 			<View style={{flex: 5}}>
 				{loadMenu && <SectionMenu />}
 			</View>
-			<View style={{flex: 2, flexDirection: 'row', padding: 10, backgroundColor: 'steelblue'}}>
+			<View
+				style={{
+					borderBottomColor: '#C5C5C5',
+					borderBottomWidth: 1,
+				}}
+				/>
+			<View style={{flex: 2, flexDirection: 'row', padding: 10, backgroundColor: '#f2f2f2'}}>
 				{status
-					? <EventButton type="confirm" title="Stop" feedback="Observation stopped" onPress={() => handleStatusButton(false)} style={{backgroundColor: 'red'}} />
-					: <EventButton type="custom" title="Start" feedback="Observation started" onPress={() => handleStatusButton(true)} />
+					? <EventButton type="confirm" title="Stop" feedback="Observation stopped" onPress={() => handleStatusButton(false)} style={{backgroundColor: '#Ff2f2f', width: 100}} />
+				: <EventButton type="custom" title= "Start" feedback="Observation started" onPress={() => handleStatusButton(true)} style={{backgroundColor: '#1ca65e', width: 100}}/>
 				}
 				<EventButton type="confirm" title="Reset" feedback="Event reset" onPress={() => handleReset()} />
         <TouchableOpacity 
         	onPress={() => setShowComment(true)}
-        	style={styles.commentButton}
+			style={styles.commentButton}
         >
-        	<Text style={styles.commentButtonText}>Add comment</Text>
+			  <Text style={styles.commentButtonText}>Add comment</Text>
         </TouchableOpacity>
         <Overlay
         	isVisible={showComment} 
         	onBackdropPress={() => setShowComment(false)} 
-        	overlayStyle={{width: 500, height: 300, position: 'absolute', top: '20%'}}
+        	overlayStyle={{width: 500, height: 200, position: 'absolute', top: '20%', backgroundColor:"#f2f2f2"}}
         >
         	<View>
         		<TextInput
-		          style={{borderColor: '#FBC02D', borderWidth: 1, width: '100%', height: '80%', padding: 10, borderRadius: 3}}
+		          style={{width: '100%', height: '65%', padding: 10, borderRadius: 10, backgroundColor: "#232323", color: "white"}}
 		          onChangeText={text => onChangeComment(text)}
 		          value={comment}
 		          enablesReturnKeyAutomatically={true}
@@ -118,7 +125,7 @@ export default function Leftside() {
 		        	title="Submit"
 		        	feedback={"Comment: " + comment}
 		        	onPress={() => setShowComment(false)}
-		        	style={{width: 'auto'}} 
+		        	style={{width: 140, marginLeft: '35%', backgroundColor: "steelblue"}} 
 		        />
         	</View>
       	</Overlay>
@@ -135,15 +142,14 @@ const styles = StyleSheet.create({
 		paddingTop: 20,
 	},
 	commentButton: {
-		backgroundColor: '#FBC02D',
-		borderColor: '#FBC02D',
-		borderWidth: 1,
+		backgroundColor: '#19ABD3',
 		borderRadius: 100,
 		justifyContent: 'center',
 		overflow: 'hidden',
-		width: '60%',
+		width: '20%',
 		height: 40,
-		margin: 11,
+		marginLeft: '45%',
+		marginTop: '1%',
 	},
 	commentButtonText: {
 		textAlign: 'center',

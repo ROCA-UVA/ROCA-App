@@ -40,7 +40,7 @@ export default function RightSide() {
 	}
 
 	return (
-		<View style={{flex: 2, backgroundColor: 'lightblue'}}>
+		<View style={{flex: 2, backgroundColor: '#EDEDED'}}>
  			<View style={{flex: 1}}>
  				<ScrollView>
  					{getEventTypes()}

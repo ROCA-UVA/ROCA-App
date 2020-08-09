@@ -97,15 +97,15 @@ function CustomEvent(props) {
 
 const styles = StyleSheet.create({
 	button: {
-		backgroundColor: '#FBC02D',
+		backgroundColor: '#232323',
 		borderRadius: 100,
 		overflow: 'hidden',
-		width: 140,
 		height: 40,
 		margin: 11,
 	},
 	buttonActive: {
 		backgroundColor: 'red',
+		borderWidth: 0
 	},
 	buttonTitle: {
 		color: "white",

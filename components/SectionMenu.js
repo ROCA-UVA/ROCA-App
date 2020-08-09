@@ -104,10 +104,10 @@ export default function SectionMenu() {
 
   return (
     <View style={{flex: 1, flexDirection: 'row'}}>
-      <View style={{flex: 7, flexDirection: 'row', flexWrap: 'wrap', padding: 10, justifyContent: 'center', alignContent: 'center', backgroundColor: 'lightblue'}}>
+      <View style={{flex: 7, flexDirection: 'row', flexWrap: 'wrap', padding: 10, justifyContent: 'center', alignContent: 'center', backgroundColor: '#f2f2f2'}}>
         {getSectionOptions()}
       </View>
-      <View style={{flex: 4, flexWrap: 'wrap', padding: 10, justifyContent: 'center', alignContent: 'center', backgroundColor: 'skyblue'}}>
+      <View style={{flex: 4, flexWrap: 'wrap', padding: 10, justifyContent: 'center', alignContent: 'center', backgroundColor: '#f2f2f2'}}>
         {getEventTypes()}
       </View>
     </View>
