@@ -6,7 +6,7 @@ export const useAppContext = () => useContext(AppContext)
 export function AppProvider(props) {
 	const [status, setStatus] = useState(false)
 	const [activity, setActivity] = useState(props.value.activity)
-	const [event, setEvent] = useState("Start recording events!")
+	const [event, setEvent] = useState("")
 	const [sections, setSections] = useState([])
 	const [log, setLog] = useState("")
 

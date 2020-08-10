@@ -27,7 +27,7 @@ export default function FeedbackBar() {
 		}
 
 		loadData()
-	}, [])
+	}, [activity])
 
 	async function handleModalSelect(params) {
 		setActivity(params.key)
@@ -48,7 +48,7 @@ export default function FeedbackBar() {
 					/>
 				</View>
 				<View style={styles.feedbackEvent}>
-					<Text numberOfLines={1} style={styles.feedbackText}>{event}</Text>
+					<Text numberOfLines={1} style={styles.feedbackText}>{event || 'Start recording events!'}</Text>
 				</View>
 			</View> 
 		</View>

@@ -20,7 +20,7 @@ export default function Leftside() {
 	const [comment, onChangeComment] = useState("Enter comments")
 	const [showComment, setShowComment] = useState(false)
 
-	const {status, setStatus, setEvent, sections, setSections, log} = useAppContext()
+	const {status, setStatus, setActivity, setEvent, sections, setSections, log, setLog} = useAppContext()
 
 	useEffect(() => {
 		async function loadData() {
@@ -44,8 +44,10 @@ export default function Leftside() {
 	}
 
 	async function handleDownload() {
+		const header = "Date: " + getDate() + "\nClassroom: " + classroomData.title
+
 		const filePath = FileSystem.documentDirectory + "roca_observation_" + getDate() + ".txt"
-		await FileSystem.writeAsStringAsync(filePath, log)
+		await FileSystem.writeAsStringAsync(filePath, header + log)
 
 		await Sharing.shareAsync(filePath)
 	}
@@ -55,7 +57,17 @@ export default function Leftside() {
 
 		if (!newStatus) {
 			handleDownload()
+			handleReset()
 		}
+	}
+
+	async function handleReset() {
+		setStatus(false)
+		await AsyncStorage.setItem('classroom', JSON.stringify({title: 'none selected', uri: {}, sections: []}))
+		setClassroomData({title: 'none selected', uri: {}, sections: []})
+		setSections(JSON.parse(await AsyncStorage.getItem('sections')))
+	  setActivity(-1)
+	  setLog("")
 	}
 
 	return (
@@ -80,7 +92,7 @@ export default function Leftside() {
 					? <EventButton type="confirm" title="Stop" feedback="Observation stopped" onPress={() => handleStatusButton(false)} style={{backgroundColor: 'red'}} />
 					: <EventButton type="custom" title="Start" feedback="Observation started" onPress={() => handleStatusButton(true)} />
 				}
-				<EventButton type="confirm" title="Reset" feedback="Event reset" />
+				<EventButton type="confirm" title="Reset" feedback="Event reset" onPress={() => handleReset()} />
         <TouchableOpacity 
         	onPress={() => setShowComment(true)}
         	style={styles.commentButton}
