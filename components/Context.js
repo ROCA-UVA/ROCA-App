@@ -1,22 +1,35 @@
-import React, { createContext, useContext, useReducer, useState} from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export const FeedbackContext = createContext()
-export const useFeedbackContext = () => useContext(FeedbackContext)
+export const AppContext = createContext()
+export const useAppContext = () => useContext(AppContext)
 
-export function FeedbackProvider(props) {
+export function AppProvider(props) {
+	const [status, setStatus] = useState(false)
 	const [activity, setActivity] = useState(props.value.activity)
-	const [event, setEvent] = useState(props.value.event)
+	const [event, setEvent] = useState("")
+	const [sections, setSections] = useState([])
+	const [log, setLog] = useState("")
+
+	useEffect(() => {
+		setLog(log + "\n" + event)
+	}, [event])
 
 	return (
-		<FeedbackContext.Provider 
+		<AppContext.Provider 
 			value={{
+				status,
+				setStatus,
 				activity,
-				event,
 				setActivity,
+				event,
 				setEvent,
+				sections,
+				setSections,
+				log,
+				setLog
 			}}
 		>
 			{props.children}
-		</FeedbackContext.Provider>
+		</AppContext.Provider>
 	)
 }

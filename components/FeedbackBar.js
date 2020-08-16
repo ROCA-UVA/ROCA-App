@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
 
 import ModalMenu from './ModalMenu';
-import { useFeedbackContext } from './Context';
+import { useAppContext } from './Context';
 import { getTime } from './Time';
 
 export default function FeedbackBar() {
 	const [activityList, setActivityList] = useState([])
 	const [activityName, setActivityName] = useState("")
 
-	const {activity, setActivity, event, setEvent} = useFeedbackContext()
+	const {activity, setActivity, event, setEvent} = useAppContext()
 
 	useEffect(() => {
 		async function loadData() {
@@ -27,7 +27,7 @@ export default function FeedbackBar() {
 		}
 
 		loadData()
-	}, [])
+	}, [activity])
 
 	async function handleModalSelect(params) {
 		setActivity(params.key)
@@ -48,7 +48,7 @@ export default function FeedbackBar() {
 					/>
 				</View>
 				<View style={styles.feedbackEvent}>
-					<Text numberOfLines={1} style={styles.feedbackText}>{event}</Text>
+					<Text numberOfLines={1} style={styles.feedbackText}>{event || 'Start recording events!'}</Text>
 				</View>
 			</View> 
 		</View>

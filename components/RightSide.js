@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, ScrollView, AsyncStorage } from 'react-native';
 
 import EventButton from './EventButton';
-import { useFeedbackContext } from './Context';
+import { useAppContext } from './Context';
 
 export default function RightSide() {
 	const [events, setEvents] = useState({})
 
-	const {activity} = useFeedbackContext()
+	const {activity} = useAppContext()
 
 	useEffect(() => {
 		async function loadData() {
