@@ -101,11 +101,12 @@ const styles = StyleSheet.create({
 		borderRadius: 100,
 		overflow: 'hidden',
 		height: 40,
+		alignSelf: 'center',
+		padding: 10,
 		margin: 11,
 	},
 	buttonActive: {
 		backgroundColor: 'red',
-		borderWidth: 0
 	},
 	buttonTitle: {
 		color: "white",

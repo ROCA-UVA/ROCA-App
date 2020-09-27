@@ -56,21 +56,22 @@ export default function ModalMenu(props) {
 
 const styles = StyleSheet.create({
 	modalOverlay: {
-		maxHeight: '50%'
+		maxHeight: '50%',
 	},
 	modalHeading: {
 		fontSize: 30,
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		padding: 10,
 	},
 	modalItem: {
 		textAlign: 'center',
 		fontSize: 30,
 		padding: 10,
-		backgroundColor: "lightgray"
+		backgroundColor: "lightgray",
 	},
 	modalSubitem: {
 		textAlign: 'center',
 		fontSize: 25,
-		padding: 10
+		padding: 10,
 	}
 });

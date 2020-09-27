@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
 	feedbackBar: {
 		flex: 1,
 		flexDirection: 'row',
-		backgroundColor: '#3CCE3C',
+		backgroundColor: '#23D178',
 		borderRadius: 100,
 	},
 	feedbackActivity: {
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 		borderRadius: 100,
 		justifyContent: 'center',
 		padding: 10,
-		backgroundColor: '#22AD1E',
+		backgroundColor: '#1ca65e',
 	},
 	feedbackEvent: {
 		flex: 8,

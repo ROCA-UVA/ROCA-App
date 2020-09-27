@@ -103,12 +103,17 @@ export default function SectionMenu() {
   }
 
   return (
-    <View style={{flex: 1, flexDirection: 'row'}}>
-      <View style={{flex: 7, flexDirection: 'row', flexWrap: 'wrap', padding: 10, justifyContent: 'center', alignContent: 'center', backgroundColor: '#f2f2f2'}}>
+    <View style={{flex: 1, flexDirection: 'row', borderTopColor: '#C5C5C5', borderTopWidth: 1}}>
+      <View style={{flex: 7, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center'}}>
         {getSectionOptions()}
       </View>
-      <View style={{flex: 4, flexWrap: 'wrap', padding: 10, justifyContent: 'center', alignContent: 'center', backgroundColor: '#f2f2f2'}}>
-        {getEventTypes()}
+      <View style={{flex: 4, borderLeftColor: '#C5C5C5', borderLeftWidth: 1}}>
+        <Text style={styles.heading}>Section Events</Text>
+        <ScrollView>
+          <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
+            {getEventTypes()}
+          </View>
+        </ScrollView>
       </View>
     </View>
   )
@@ -126,5 +131,13 @@ const styles = StyleSheet.create({
     borderRadius: 3, 
     backgroundColor: '#fafafa', 
     borderColor: '#ededed'
+  },
+  heading: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    padding: 10,
+    width: 'auto',
+    textAlign: 'center',
+    backgroundColor: 'lightgray',
   }
 })

@@ -64,6 +64,7 @@ export default function Leftside() {
 
 	async function handleReset() {
 		setStatus(false)
+		setLoadMenu(false)
 		await AsyncStorage.setItem('classroom', JSON.stringify({title: 'none selected', uri: {}, sections: []}))
 		setClassroomData({title: 'none selected', uri: {}, sections: []})
 		setSections(JSON.parse(await AsyncStorage.getItem('sections')))
@@ -72,7 +73,7 @@ export default function Leftside() {
 	}
 
 	return (
-		<View style={{flex: 6, backgroundColor: '#f2f2f2'}}>
+		<View style={{flex: 6}}>
 			<View style={{flex: 2, flexDirection: 'row'}}>
 				<Text style={styles.title}>Classroom:</Text>
 				<ModalMenu 
@@ -88,32 +89,29 @@ export default function Leftside() {
 			<View style={{flex: 5}}>
 				{loadMenu && <SectionMenu />}
 			</View>
-			<View
-				style={{
-					borderBottomColor: '#C5C5C5',
-					borderBottomWidth: 1,
-				}}
-				/>
-			<View style={{flex: 2, flexDirection: 'row', padding: 10, backgroundColor: '#f2f2f2'}}>
+			<View style={{borderBottomColor: '#C5C5C5', borderBottomWidth: 1}} />
+			<View style={{flex: 2, flexDirection: 'row', padding: 10}}>
 				{status
-					? <EventButton type="confirm" title="Stop" feedback="Observation stopped" onPress={() => handleStatusButton(false)} style={{backgroundColor: '#Ff2f2f', width: 100}} />
-				: <EventButton type="custom" title= "Start" feedback="Observation started" onPress={() => handleStatusButton(true)} style={{backgroundColor: '#1ca65e', width: 100}}/>
+					? <EventButton type="confirm" title="Stop" feedback="Observation stopped" onPress={() => handleStatusButton(false)} style={{backgroundColor: '#D71D2D', width: 140}} />
+					: <EventButton type="custom" title= "Start" feedback="Observation started" onPress={() => handleStatusButton(true)} style={{backgroundColor: '#1ca65e', width: 140}}/>
 				}
-				<EventButton type="confirm" title="Reset" feedback="Event reset" onPress={() => handleReset()} />
-        <TouchableOpacity 
-        	onPress={() => setShowComment(true)}
-			style={styles.commentButton}
-        >
-			  <Text style={styles.commentButtonText}>Add comment</Text>
-        </TouchableOpacity>
+				<EventButton type="confirm" title="Reset" feedback="Event reset" onPress={() => handleReset()} style={{width: 140}} />
+        <View style={{flex: 1, flexDirection: 'row-reverse'}}>
+	        <TouchableOpacity 
+	        	onPress={() => setShowComment(true)}
+						style={styles.commentButton}
+	        >
+				  	<Text style={styles.commentButtonText}>Add comment</Text>
+	        </TouchableOpacity>
+        </View>
         <Overlay
         	isVisible={showComment} 
         	onBackdropPress={() => setShowComment(false)} 
-        	overlayStyle={{width: 500, height: 200, position: 'absolute', top: '20%', backgroundColor:"#f2f2f2"}}
+        	overlayStyle={{width: 500, height: 200, position: 'absolute', top: '20%', borderRadius: 10}}
         >
         	<View>
         		<TextInput
-		          style={{width: '100%', height: '65%', padding: 10, borderRadius: 10, backgroundColor: "#232323", color: "white"}}
+		          style={{width: '100%', height: '65%', padding: 10, borderRadius: 10, borderWidth: 1, borderColor: '#C5C5C5'}}
 		          onChangeText={text => onChangeComment(text)}
 		          value={comment}
 		          enablesReturnKeyAutomatically={true}
@@ -125,7 +123,7 @@ export default function Leftside() {
 		        	title="Submit"
 		        	feedback={"Comment: " + comment}
 		        	onPress={() => setShowComment(false)}
-		        	style={{width: 140, marginLeft: '35%', backgroundColor: "steelblue"}} 
+		        	style={{width: 140, justifyContent: 'center', backgroundColor: "steelblue"}} 
 		        />
         	</View>
       	</Overlay>
@@ -142,14 +140,13 @@ const styles = StyleSheet.create({
 		paddingTop: 20,
 	},
 	commentButton: {
-		backgroundColor: '#19ABD3',
+		backgroundColor: 'steelblue',
 		borderRadius: 100,
 		justifyContent: 'center',
 		overflow: 'hidden',
-		width: '20%',
+		width: 140,
 		height: 40,
-		marginLeft: '45%',
-		marginTop: '1%',
+		margin: 11,
 	},
 	commentButtonText: {
 		textAlign: 'center',

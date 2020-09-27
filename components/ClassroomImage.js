@@ -28,7 +28,7 @@ export default function ClassroomImage(props) {
 							sections[index].checked && styles.sectionSelected
 						]}
 						key={index}>
-						<TouchableHighlight style={{flex: 1}} onPress={() => handleSelect(index)}>
+						<TouchableHighlight style={{flex: 1, justifyContent: 'center'}} onPress={() => handleSelect(index)}>
 							<Text style={styles.sectionText}>Section {index+1}</Text>
 						</TouchableHighlight>
 					</View>
@@ -48,7 +48,6 @@ export default function ClassroomImage(props) {
 const styles = StyleSheet.create({
 	imageContainer: {
 		flex: 10,
-		backgroundColor: 'white',
 		justifyContent: 'center',
 	},
 	image: {
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	sectionSelected: {
-		borderColor: '#FBC02D',
+		borderColor: '#1CA65E',
 	},
 	sectionText: {
 		textAlign: 'center',
