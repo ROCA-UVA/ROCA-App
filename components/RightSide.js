@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, ScrollView, AsyncStorage } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, AsyncStorage } from 'react-native';
 
 import EventButton from './EventButton';
 import { useAppContext } from './Context';
@@ -22,7 +22,7 @@ export default function RightSide() {
 		loadData()
 	}, [])
 
-	function getEventData(type, event) {
+	function getEventData(event) {
 		if (event.dependencies.includes(activity)) {
 			return <EventButton type={event.type} title={event.title} key={event.code} />
 		}
@@ -31,21 +31,36 @@ export default function RightSide() {
 	function getEventTypes() {
 		return Object.keys(events).map((type) => {
 			return [
-				<Text key={type}>{type}</Text>,
-				events[type].map((event) => {
-					return getEventData(type, event)
-				})
+				<Text style={styles.heading} key={type}>{type}</Text>,
+				<View style={{flexDirection: 'row', flexWrap: 'wrap'}} key={type + '_view'}>
+					{
+						events[type].map((event) => {
+							return getEventData(event)
+						})	
+					}
+				</View>
 			]
 		})
 	}
 
 	return (
-		<View style={{flex: 2, backgroundColor: 'lightblue'}}>
- 			<View style={{flex: 1}}>
- 				<ScrollView>
- 					{getEventTypes()}
- 				</ScrollView>
- 			</View>
+		<View style={{flex: 2, borderLeftColor: '#C5C5C5', borderLeftWidth: 1}}>
+			{activity == -1 || activity == 5
+				? <Text style={styles.heading}>No data available</Text>
+				: <ScrollView>
+						{getEventTypes()}
+					</ScrollView>
+			}
  		</View>
 	)
 }
+
+const styles = StyleSheet.create({
+	heading: {
+		fontSize: 30,
+		fontWeight: 'bold',
+		padding: 10,
+		textAlign: 'center',
+		backgroundColor: 'lightgray',
+	}
+});

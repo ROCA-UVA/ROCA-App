@@ -10,7 +10,7 @@ import { AppProvider } from './components/Context';
 export default function App() {
   return (
     <AppProvider value={{activity: -1}}>
-      <View style={{flex: 1, flexDirection: 'row'}}>
+      <View style={{flex: 1, flexDirection: 'row', backgroundColor: '#f2f2f2'}}>
         <LeftSide />
         <RightSide />
       </View>

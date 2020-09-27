@@ -21,7 +21,7 @@
 	],
 
 	"a_events": {
-		"instructor": [
+		"Instructor": [
 			{"title": "Problems", "code": "PRB", "type": "durational", "dependencies": [1, 2, 3, 6, 7]},
 			{"title": "Writing", "code": "WRT", "type": "durational", "dependencies": [1, 2, 3, 6, 7]},
 			{"title": "Pre-made Materials", "code": "PRE-M", "type": "durational", "dependencies": [1, 2, 3, 4, 6, 7]},
@@ -38,12 +38,12 @@
 			{"title": "Uses Humor", "code": "HUM", "type": "instantaneous", "dependencies": [1, 2, 3, 6, 7, 8]},
 			{"title": "Uses Emphasis", "code": "EMP", "type": "instantaneous", "dependencies": [1, 2, 3, 6, 7, 8]}
 		],
-		"technology": [
+		"Technology": [
 			{"title": "Digital", "code": "DIG", "type": "durational", "dependencies": [2, 3, 4, 6, 7, 8]},
 			{"title": "Response System", "code": "R-SYS", "type": "durational", "dependencies": [1, 2, 6, 7, 8]},
 			{"title": "Website", "code": "WEB", "type": "durational", "dependencies": [1, 2, 3, 4, 6, 7, 8]}
 		],
-		"student": [
+		"Student": [
 			{"title": "Structured Work", "code": "STR-W", "type": "durational", "dependencies": [1, 2, 3, 6, 7, 8]},
 			{"title": "Informal Discussion", "code": "I-DSC", "type": "durational", "dependencies": [1, 2, 3, 6, 8]},
 			{"title": "Live Action", "code": "SL-ACT", "type": "durational", "dependencies": [1, 2, 3, 6, 8]},
@@ -53,13 +53,13 @@
 		]	
 	},
 	"z_events": {
-		"instructor": [
+		"Instructor": [
 			{"title": "Asks a Question", "code": "ASK-Q", "type": "instantaneous", "dependencies": [1, 2, 3, 4, 6, 7, 8]},
 			{"title": "Responds to Instructor", "code": "RSP-I", "type": "instantaneous", "dependencies": [1, 2, 3, 4, 6, 7, 8]},
 			{"title": "Responds to Student", "code": "RSP-S", "type": "instantaneous", "dependencies": [1, 2, 3, 4, 6, 7, 8]},
 			{"title": "Makes Prediction", "code": "PRD", "type": "instantaneous", "dependencies": [1, 2, 6, 7, 8]}
 		],
-		"student": [
+		"Student": [
 
 		]
 	},
